@@ -1,0 +1,43 @@
+@import (less, reference) '../../assets/styles/colors.less';
+@import (less, reference) '../../assets/styles/mixins.less';
+
+.weather {
+  display: inline-block;
+  text-align: left;
+  width: 80%;
+  max-width: 1200px;
+  background-color: @color-white;
+  border: 1px solid @color-gray;
+  border-radius: 4px;
+  margin: 10px auto;
+  padding: 10px 50px;
+  box-shadow: 0 1/8rem 1/8rem 0 @color-shadow;
+
+  .city {
+    font-size: 20px;
+    font-weight: 400;
+    color: @color-text-light;
+  }
+
+  .desc {
+    font-size: 16px;
+    color: @color-text-light;
+  }
+
+  .temp {
+    position: relative;
+
+    .units {
+      .fontOpenSans();
+      font-size: 64px;
+      font-weight: 400;
+    }
+    .metrics {
+      .fontRoboto();
+      font-size: 18px;
+      font-weight: 300;
+      position: absolute;
+      top: 16px;
+    }
+  }
+}

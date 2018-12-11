@@ -1,0 +1,94 @@
+.icon {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-origin: padding-box;
+  background-clip: border-box;
+  background-size: contain;
+  background-image: url(/img/cloudy-day-1.svg);
+
+  &.thunderstorm {
+    background-image: url(/img/thunder.svg);
+  }
+
+  &.lightrain {
+    &.day {
+      background-image: url(/img/rainy-2.svg);
+    }
+    &.night {
+      background-image: url(/img/rainy-4.svg);
+    }
+  }
+
+  &.rain {
+    &.day {
+      background-image: url(/img/rainy-3.svg);
+    }
+    &.night {
+      background-image: url(/img/rainy-5.svg);
+    }
+  }
+
+  &.heavyrain {
+    background-image: url(/img/rainy-6.svg);
+  }
+
+  &.hail {
+    background-image: url(/img/rainy-7.svg);
+  }
+
+  &.lightsnow {
+    &.day {
+      background-image: url(/img/snowy-2.svg);
+    }
+    &.night {
+      background-image: url(/img/snowy-4.svg);
+    }
+  }
+
+  &.snow {
+    &.day {
+      background-image: url(/img/snowy-3.svg);
+    }
+    &.night {
+      background-image: url(/img/snowy-5.svg);
+    }
+  }
+
+  &.heavysnow {
+    background-image: url(/img/snowy-6.svg);
+  }
+
+  &.clear {
+    &.day {
+      background-image: url(/img/day.svg);
+    }
+    &.night {
+      background-image: url(/img/night.svg);
+    }
+  }
+
+  &.fewclouds {
+    &.day {
+      background-image: url(/img/cloudy-day-1.svg);
+    }
+    &.night {
+      background-image: url(/img/cloudy-night-1.svg);
+    }
+  }
+
+  &.clouds {
+    &.day {
+      background-image: url(/img/cloudy-day-3.svg);
+    }
+    &.night {
+      background-image: url(/img/cloudy-night-3.svg);
+    }
+  }
+
+  &.darkclouds {
+    background-image: url(/img/cloudy.svg);
+  }
+}
