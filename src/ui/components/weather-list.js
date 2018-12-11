@@ -1,9 +1,16 @@
 import React from 'react';
+import { connect } from "react-redux";
 import Weather from './weather.js';
 import './weather-list.less';
 
+const mapStateToProps = (state) => {
+  return {
+    weathers: state.locations
+  }
+}
+
 const WeatherList = (props) => {
-  if (!props.weathers) return <div></div>;
+  if (!props.weathers) return <></>;
 
   const weathers = props.weathers.map((weather) =>
     <li key={weather.id} className="weather-element"><Weather weather={weather} /></li>
@@ -14,4 +21,6 @@ const WeatherList = (props) => {
   );
 }
 
-export default WeatherList;
+const ConnectedWeatherList = connect(mapStateToProps)(WeatherList);
+
+export default ConnectedWeatherList;

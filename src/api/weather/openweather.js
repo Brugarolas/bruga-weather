@@ -1,3 +1,5 @@
+import Adapt from './adapt.js';
+
 const API_URL = 'https://api.openweathermap.org/data/2.5/';
 
 const DEFAULT_PARAMS = {
@@ -20,7 +22,9 @@ const searchCity = async (city) => {
 
   let response = await fetch(url, { cache: 'no-cache' });
 
-  return await response.json();
+  let json = await response.json();
+
+  return Adapt.transform(json);
 }
 
 /* Exports */

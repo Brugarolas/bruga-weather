@@ -1,0 +1,59 @@
+@import (less, reference) "../../assets/styles/colors.less";
+@import (less, reference) "../../assets/styles/mixins.less";
+
+.new-city-card {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 280px;
+  background-color: @color-white;
+  border: 1px solid @color-gray;
+  border-radius: 4px;
+  margin: 24px auto;
+  box-shadow: 0 1/8rem 1/8rem 0 @color-shadow;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  .container {
+    position: relative;
+    padding: 10px 25px;
+
+    &.icons {
+      height: 172px;
+    }
+
+    .icon-rain {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      top: -50px;
+      left: calc(50% - 200px/2);
+      z-index: 3;
+    }
+    .icon-city {
+      position: absolute;
+      font-size: 69px;
+      bottom: 20px;
+      left: calc(50% - 42px);
+      color: #ff922b;
+      z-index: 2;
+    }
+
+    .title {
+      .fontRoboto();
+      margin: 5px 0;
+    }
+    .description {
+      .fontOpenSans();
+      margin: 10px 0;
+    }
+
+    &:not(:first-child) {
+      border-top: 1px solid @color-gray;
+    }
+  }
+}

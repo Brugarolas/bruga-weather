@@ -3,7 +3,7 @@ import './modal.less';
 
 const Modal = (props) => {
   return (
-    <div class='modal'>
+    <div className='modal'>
       { props.children }
       <button onClick={props.handleOnClose} className='close-button'><i className='fas fa-times icon-close'></i></button>
     </div>

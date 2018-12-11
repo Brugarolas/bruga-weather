@@ -7,8 +7,12 @@ const roundTo2 = (number) => {
 }
 
 const transform = (weather) => {
+  if (weather.cod !== 200) {
+    return { ...weather, error: true };
+  }
+
   return {
-    id: weather.sys.id,
+    id: weather.id,
     city: weather.name,
     country: weather.sys.country,
     temp: round(weather.main.temp),

@@ -1,0 +1,88 @@
+@import (less, reference) "../../assets/styles/colors.less";
+@import (less, reference) "../../assets/styles/mixins.less";
+
+.search-form {
+  .fontOpenSans();
+  width: 480px;
+
+  .title {
+    margin: 5px 0 25px 0;
+  }
+
+  .search-box {
+    margin-bottom: 8px;
+  }
+
+  .input-search {
+    padding: 6px;
+    display: inline-block;
+    width: 320px;
+    border: 2px solid @main-input-color;
+    border-radius: 4px 0 0 4px;
+    transition: all .3s ease-in-out;
+
+    &:hover, &:focus, &.completed {
+      border-color: @main-input-dark-color;
+    }
+  }
+
+  .button-search {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
+    .fontRoboto();
+    position: relative;
+    box-sizing: border-box;
+    background-clip: border-box;
+    border: 2px solid @main-input-color;
+    background-color: @main-input-color;
+    border-radius: 0 4px 4px 0;
+    padding: 5px 12px;
+    color: @color-white;
+    letter-spacing: 0.75px;
+    transition: all .3s ease-in-out;
+
+    .icon {
+      margin-right: 8px;
+    }
+
+    &:hover {
+      border-color: @main-input-dark-color;
+      background-color: @main-input-dark-color;
+    }
+
+    &:active {
+      background-color: @main-input-light-color;
+      border-color: @main-input-light-color;
+      transition: all .1s ease-in-out;
+    }
+
+    &::after {
+      content: '';
+      width: calc(100% - 2px);
+      height: calc(100% - 2px);
+      padding: 1rem;
+      border-radius: 4px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 2px solid @main-input-light-color;
+      transform: translate(-50% , -50%);
+      opacity: 0;
+      pointer-events: none;
+      box-sizing: content-box;
+    }
+
+    &:hover::after {
+      padding: 0;
+      border-color: @main-input-dark-color;
+      transition: all .3s ease-in-out;
+      opacity: 1;
+    }
+
+    &:active::after {
+      border-color: @main-input-light-color;
+      transition: all .1s ease-in-out;
+    }
+  }
+}

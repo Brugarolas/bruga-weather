@@ -48,7 +48,7 @@ Object.entries(classes).forEach(([cssClass, weathersDesc]) => {
 
 /** Icon react */
 const Icon = (props) => {
-  let classNames = ['icon', weathers[props.weather], props.daytime ? 'day' : 'night'].join(' ');
+  let classNames = ['weather-icon', weathers[props.weather], props.daytime ? 'day' : 'night'].join(' ');
 
   return (
     <i className={classNames} />
