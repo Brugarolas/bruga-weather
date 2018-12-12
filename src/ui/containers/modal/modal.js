@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import CancelButton from '@/ui/components/cancel-button.js';
 import './modal.less';
 
 const Modal = (props) => {
   return (
     <div className='modal'>
       { props.children }
-      <button onClick={props.handleOnClose} className='close-button'><i className='fas fa-times icon-close'></i></button>
+      <CancelButton onClick={props.handleOnClose} />
     </div>
   );
 }

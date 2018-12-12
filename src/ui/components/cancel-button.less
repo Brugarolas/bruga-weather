@@ -1,0 +1,32 @@
+@import (less, reference) '../../assets/styles/colors.less';
+
+.cancel-button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  outline: none;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+
+  /* Style */
+  position: absolute;
+  right: 10px;
+  top: 5px;
+
+  .icon-cancel {
+    font-size: 24px;
+    color: @color-red;
+    opacity: 0.5;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover .icon-cancel {
+    opacity: 1;
+  }
+}

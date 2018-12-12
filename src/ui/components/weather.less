@@ -2,6 +2,7 @@
 @import (less, reference) '../../assets/styles/mixins.less';
 
 .weather {
+  position: relative;
   display: flow-root;
   width: 80%;
   max-width: 1200px;
@@ -17,7 +18,7 @@
     float: left;
     width: 200px;
     text-align: left;
-    margin-top: 20px; //Temporary
+    margin-top: 16px; //Temporary
   }
   .column-2 {
     display: inline-block;
@@ -63,5 +64,15 @@
       position: absolute;
       top: 16px;
     }
+  }
+
+  .cancel-button .icon-cancel {
+    opacity: 0;
+  }
+  &:hover .cancel-button .icon-cancel {
+    opacity: 0.25;
+  }
+  &:hover .cancel-button:hover .icon-cancel {
+    opacity: 1;
   }
 }

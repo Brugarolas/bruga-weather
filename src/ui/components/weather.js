@@ -1,9 +1,22 @@
 import React from 'react';
+import { connect } from "react-redux";
 import Icon from './icon.js';
+import CancelButton from '@/ui/components/cancel-button.js';
+import Actions from '@/store/actions/index.js';
 import './weather.less';
 
+const mapDispatchToProps = dispatch => {
+  return {
+    removeLocation: id => dispatch(Actions.removeLocation(id))
+  };
+};
+
 const Weather = (props) => {
-  let { weather } = props;
+  const { weather } = props;
+
+  const click = () => {
+    props.removeLocation(weather.id);
+  }
 
   return (
     <article className='weather'>
@@ -22,8 +35,12 @@ const Weather = (props) => {
           <span className="metrics">°C</span>
         </div>
       </div>
+
+      <CancelButton onClick={click} />
     </article>
   );
 }
 
-export default Weather;
+const ConnectedWeather = connect(undefined, mapDispatchToProps)(Weather);
+
+export default ConnectedWeather;
