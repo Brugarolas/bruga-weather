@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import ModalContainer from './modal/modal-container.js';
 import Modal from './modal/modal.js';
 import SearchCityForm from '@/ui/components/search-city-form.js';
+import CityList from '@/ui/components/city-list.js';
 import NewCityCard from '@/ui/components/new-city-card.js';
 import OpenWeather from '@/api/weather/openweather.js';
+import OpenCities from '@/api/weather/cities.js';
 import Actions from '@/store/actions/index.js';
 
 const mapDispatchToProps = dispatch => {
@@ -24,12 +26,30 @@ class Control extends PureComponent {
 
   toggleModal = (media) => {
     this.setState({
-      modalVisible: !this.state.modalVisible
+      modalVisible: !this.state.modalVisible,
+      cities: []
     });
   }
 
   searchCity = (cityName) => {
-    OpenWeather.searchCity(cityName).then((weather) => {
+    OpenCities.searchCity(cityName).then(cities => {
+      this.setState({
+        cities: cities
+      });
+    });
+
+    /* OpenWeather.searchCityByName(cityName).then((weather) => {
+      if (!weather.error) {
+        this.setState({
+          modalVisible: !this.state.modalVisible
+        });
+        this.props.addLocation(weather);
+      }
+    }); */
+  }
+
+  selectCity = (city) => {
+    OpenWeather.searchCityById(city.id).then((weather) => {
       if (!weather.error) {
         this.setState({
           modalVisible: !this.state.modalVisible
@@ -37,24 +57,6 @@ class Control extends PureComponent {
         this.props.addLocation(weather);
       }
     });
-  }
-
-  addWeatherLocation = (cityName) => {
-    OpenWeather.searchCity(cityName).then((weather) => {
-      this.props.addLocation(weather);
-    });
-  }
-
-  componentWillMount() {
-    /* this.addWeatherLocation('Madrid');
-    this.addWeatherLocation('London');
-    this.addWeatherLocation('Barcelona');
-    this.addWeatherLocation('Paris');
-    this.addWeatherLocation('Osaka');
-    this.addWeatherLocation('Anchorage');
-    this.addWeatherLocation('Buenos Aires');
-    this.addWeatherLocation('Moscow');
-    this.addWeatherLocation('Tokyo'); */
   }
 
   render () {
@@ -65,6 +67,7 @@ class Control extends PureComponent {
             this.state.modalVisible &&
             <Modal handleOnClose={this.toggleModal}>
               <SearchCityForm searchCity={this.searchCity} />
+              <CityList cities={this.state.cities} clickCity={this.selectCity} />
             </Modal>
           }
         </ModalContainer>

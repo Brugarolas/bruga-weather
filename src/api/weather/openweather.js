@@ -17,15 +17,25 @@ const paramsToUrl = (params = {}) => Object.entries(params).map((param) => param
 const paramToUrl = (name, value) => name + (value ? '=' + value : '');
 
 /* Public API */
-const searchCity = async (city) => {
-  let url = buildApiUrl('weather', { q: city });
-
-  let response = await fetch(url, { cache: 'no-cache' });
+const search = async (url) => {
+  let response = await fetch(url, { cache: 'default' });
 
   let json = await response.json();
 
-  return Adapt.transform(json);
+  return Adapt.transformWeather(json);
+}
+
+const searchCityByName = async (city) => {
+  let url = buildApiUrl('weather', { q: city });
+
+  return await search(url);
+}
+
+const searchCityById = async (id) => {
+  let url = buildApiUrl('weather', { id });
+
+  return await search(url);
 }
 
 /* Exports */
-export default { searchCity };
+export default { searchCityById, searchCityByName };

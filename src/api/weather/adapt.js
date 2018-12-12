@@ -6,7 +6,15 @@ const roundTo2 = (number) => {
   return Math.round(number * 100) / 100;
 }
 
-const transform = (weather) => {
+const fahrenheitToCelsius = (f) => {
+  return Math.round((f - 32) * (5 / 9));
+}
+
+const kelvinToCelsius = (k) => {
+  return Math.round((k - 273.15));
+}
+
+const transformWeather = (weather) => {
   if (weather.cod !== 200) {
     return { ...weather, error: true };
   }
@@ -26,4 +34,15 @@ const transform = (weather) => {
   }
 }
 
-export default { transform };
+const transformCity = (city) => {
+  return {
+    id: city.id,
+    name: city.name,
+    country: city.sys.country,
+    temp: kelvinToCelsius(city.main.temp),
+    main: city.weather[0].main,
+    descr: city.weather[0].description
+  }
+}
+
+export default { transformWeather, transformCity };
