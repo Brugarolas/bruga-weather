@@ -37,15 +37,6 @@ class Control extends PureComponent {
         cities: cities
       });
     });
-
-    /* OpenWeather.searchCityByName(cityName).then((weather) => {
-      if (!weather.error) {
-        this.setState({
-          modalVisible: !this.state.modalVisible
-        });
-        this.props.addLocation(weather);
-      }
-    }); */
   }
 
   selectCity = (city) => {

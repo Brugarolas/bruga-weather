@@ -22,7 +22,7 @@ const paramToUrl = (name, value) => name + (value ? '=' + value : '');
 const searchCity = async (city) => {
   let url = buildApiUrl({ q: city });
 
-  let response = await fetch(url, { cache: 'force-cache' });
+  let response = await fetch(url, { cache: 'default' });
 
   let json = await response.json();
 

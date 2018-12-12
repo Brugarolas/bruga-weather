@@ -20,7 +20,7 @@ const City = (props) => {
   return (
     <article className='city' onClick={click}>
       <div className="column-1">
-        <div className="name">{ city.name } ({ city.country })</div>
+        <div className="name">{ city.name } (<img className="flag" src={city.flag} />)</div>
         <div className="descr">{ city.main }</div>
       </div>
       <div className="column-2">

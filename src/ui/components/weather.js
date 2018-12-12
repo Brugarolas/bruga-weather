@@ -8,7 +8,7 @@ const Weather = (props) => {
   return (
     <article className='weather'>
       <div className="column-1">
-        <div className="name">{ weather.city }</div>
+        <div className="name">{ weather.city } (<img className="flag" src={weather.flag} />)</div>
         <div className="desc">{ weather.main }</div>
       </div>
 
