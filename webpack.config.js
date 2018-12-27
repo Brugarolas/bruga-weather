@@ -2,9 +2,12 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const RemoteFilePlugin = require('remote-file-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 
 module.exports = (env, args) => {
   const isProduction = args.mode === 'production';
+
+  const publicPath = isProduction ? '/' + (args.publicPath ? args.publicPath + '/' : '') : '/';
 
   const config = {
     entry: './src/index.js',
@@ -71,22 +74,29 @@ module.exports = (env, args) => {
       ]
     },
     plugins: [
-      new HtmlWebPackPlugin({
-        template: './src/index.html',
-        filename: './index.html',
-        favicon: './src/assets/logo.png',
-        inject: true
-      }),
-      new MiniCssExtractPlugin({
-        filename: "styles/bundle.css?[hash]"
-      }),
       new RemoteFilePlugin([
         {
           url: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Roboto:100,300,400,500,700,900',
           filepath: 'styles/fonts.css',
           cache: true
         },
-      ])
+      ]),
+      new MiniCssExtractPlugin({
+        filename: "styles/bundle.css?[hash]"
+      }),
+      new HtmlWebPackPlugin({
+        template: './src/index.html',
+        filename: './index.html',
+        favicon: './src/assets/logo.png',
+        inject: true
+      }),
+      new HtmlWebpackIncludeAssetsPlugin({
+        assets: ['styles/fonts.css'],
+        resolvePaths: true,
+        publicPath: true,
+        append: true,
+        hash: true
+      })
     ],
     resolve: {
       alias: {
@@ -96,7 +106,7 @@ module.exports = (env, args) => {
     },
     output: {
       path: __dirname + '/dist',
-      publicPath: '/',
+      publicPath: publicPath,
       filename: 'js/bundle.js?[hash]'
     },
     devServer: {

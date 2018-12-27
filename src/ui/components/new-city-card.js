@@ -1,11 +1,12 @@
 import React from 'react';
+import rainy6 from '@/assets/amcharts-weather-icons/animated/rainy-6.svg';
 import './new-city-card.less';
 
 const NewCityCard = (props) => {
   return (
     <div className="new-city-card" onClick={props.onClick} >
       <div className="container icons">
-        <img className="icon-rain" src="/img/rainy-6.svg" />
+        <img className="icon-rain" src={rainy6} />
         <i className="fas fa-city icon-city"></i>
       </div>
       <div className="container">

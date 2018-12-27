@@ -1,3 +1,5 @@
+@import (less, reference) "../../assets/styles/icons.less";
+
 .weather-icon {
   width: 100px;
   height: 100px;
@@ -7,90 +9,90 @@
   background-origin: padding-box;
   background-clip: border-box;
   background-size: contain;
-  background-image: url(/img/cloudy-day-1.svg);
+  background-image: @cloudyDay1;
   margin: -20px;
   margin-top: -6px;
 
   &.thunderstorm {
-    background-image: url(/img/thunder.svg);
+    background-image: @thunder;
   }
 
   &.lightrain {
     &.day {
-      background-image: url(/img/rainy-2.svg);
+      background-image: @rainy2;
     }
     &.night {
-      background-image: url(/img/rainy-4.svg);
+      background-image: @rainy4;
     }
   }
 
   &.rain {
     &.day {
-      background-image: url(/img/rainy-3.svg);
+      background-image: @rainy3;
     }
     &.night {
-      background-image: url(/img/rainy-5.svg);
+      background-image: @rainy5;
     }
   }
 
   &.heavyrain {
-    background-image: url(/img/rainy-6.svg);
+    background-image: @rainy6;
   }
 
   &.hail {
-    background-image: url(/img/rainy-7.svg);
+    background-image: @rainy7;
   }
 
   &.lightsnow {
     &.day {
-      background-image: url(/img/snowy-2.svg);
+      background-image: @snowy2;
     }
     &.night {
-      background-image: url(/img/snowy-4.svg);
+      background-image: @snowy4;
     }
   }
 
   &.snow {
     &.day {
-      background-image: url(/img/snowy-3.svg);
+      background-image: @snowy3;
     }
     &.night {
-      background-image: url(/img/snowy-5.svg);
+      background-image: @snowy5;
     }
   }
 
   &.heavysnow {
-    background-image: url(/img/snowy-6.svg);
+    background-image: @snowy6;
   }
 
   &.clear {
     &.day {
-      background-image: url(/img/day.svg);
+      background-image: @day;
     }
     &.night {
-      background-image: url(/img/night.svg);
+      background-image: @night;
     }
   }
 
   &.fewclouds {
     &.day {
-      background-image: url(/img/cloudy-day-1.svg);
+      background-image: @cloudyDay1;
     }
     &.night {
-      background-image: url(/img/cloudy-night-1.svg);
+      background-image: @cloudyNight1;
     }
   }
 
   &.clouds {
     &.day {
-      background-image: url(/img/cloudy-day-3.svg);
+      background-image: @cloudyDay3;
     }
     &.night {
-      background-image: url(/img/cloudy-night-3.svg);
+      background-image: @cloudyNight3;
     }
   }
 
   &.darkclouds {
-    background-image: url(/img/cloudy.svg);
+    background-image: @cloudy;
   }
 }

@@ -1,27 +1,6 @@
 import React from 'react';
 import './icon.less';
 
-/** Icon assets: Check https://www.amcharts.com/free-animated-svg-weather-icons/ */
-import '@/assets/amcharts-weather-icons/animated/thunder.svg';
-import '@/assets/amcharts-weather-icons/animated/rainy-2.svg';
-import '@/assets/amcharts-weather-icons/animated/rainy-3.svg';
-import '@/assets/amcharts-weather-icons/animated/rainy-4.svg';
-import '@/assets/amcharts-weather-icons/animated/rainy-5.svg';
-import '@/assets/amcharts-weather-icons/animated/rainy-6.svg';
-import '@/assets/amcharts-weather-icons/animated/rainy-7.svg';
-import '@/assets/amcharts-weather-icons/animated/snowy-2.svg';
-import '@/assets/amcharts-weather-icons/animated/snowy-3.svg';
-import '@/assets/amcharts-weather-icons/animated/snowy-4.svg';
-import '@/assets/amcharts-weather-icons/animated/snowy-5.svg';
-import '@/assets/amcharts-weather-icons/animated/snowy-6.svg';
-import '@/assets/amcharts-weather-icons/animated/day.svg';
-import '@/assets/amcharts-weather-icons/animated/night.svg';
-import '@/assets/amcharts-weather-icons/animated/cloudy-day-1.svg';
-import '@/assets/amcharts-weather-icons/animated/cloudy-day-3.svg';
-import '@/assets/amcharts-weather-icons/animated/cloudy-night-1.svg';
-import '@/assets/amcharts-weather-icons/animated/cloudy-night-3.svg';
-import '@/assets/amcharts-weather-icons/animated/cloudy.svg';
-
 /** Icon CSS classes: check https://openweathermap.org/weather-conditions */
 var classes = {
   thunderstorm: ['thunderstorm with light rain', 'thunderstorm with rain', 'thunderstorm with heavy rain', 'light thunderstorm', 'thunderstorm', 'heavy thunderstorm', 'ragged thunderstorm', 'ragged thunderstorm', 'thunderstorm with light drizzle', 'thunderstorm with drizzle', 'thunderstorm with heavy drizzle'],
