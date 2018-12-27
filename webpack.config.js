@@ -45,6 +45,7 @@ module.exports = (env, args) => {
         },
         {
           test: /\.(png|jpg|gif|svg)$/,
+          exclude: /(fa-.+\.svg)$/, /* Font Awesome */
           loader: 'file-loader',
           options: {
             name: '[name].[ext]?[hash]',
@@ -52,7 +53,7 @@ module.exports = (env, args) => {
           }
         },
         {
-          test: /\.(woff|woff2|ttf|eot)$/,
+          test: [ /\.(woff|woff2|ttf|eot)$/, /(fa-.+\.svg)$/ ],
           loader: 'file-loader',
           options: {
             name: '[name].[ext]?[hash]',
