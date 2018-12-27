@@ -4,6 +4,7 @@ import './cancel-button.less';
 const CancelButton = (props) => {
   const click = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     props.onClick();
   }
 
