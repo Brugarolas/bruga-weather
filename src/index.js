@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import '@/assets/styles/main.less';
 import App from '@/ui/containers/app';
 
 import { Provider } from "react-redux";

@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const RemoteFilePlugin = require('remote-file-webpack-plugin');
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
   entry: ['@babel/polyfill', './src/index.js'],
   module: {
@@ -43,6 +45,14 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]',
           outputPath: 'img'
+        }
+      },
+      {
+        test: /\.(woff|woff2|ttf|eot)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]',
+          outputPath: 'fonts'
         }
       },
       {
