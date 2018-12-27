@@ -5,7 +5,6 @@ import Modal from './modal/modal.js';
 import SearchCityForm from '@/ui/components/search-city-form.js';
 import CityList from '@/ui/components/city-list.js';
 import NewCityCard from '@/ui/components/new-city-card.js';
-import OpenWeather from '@/api/weather/openweather.js';
 import OpenCities from '@/api/weather/cities.js';
 import Actions from '@/store/actions/index.js';
 
@@ -24,7 +23,7 @@ class Control extends PureComponent {
     modalVisible: false
   }
 
-  toggleModal = (media) => {
+  toggleModal = () => {
     this.setState({
       modalVisible: !this.state.modalVisible,
       cities: []
@@ -40,14 +39,12 @@ class Control extends PureComponent {
   }
 
   selectCity = (city) => {
-    OpenWeather.searchCityById(city.id).then((weather) => {
-      if (!weather.error) {
-        this.setState({
-          modalVisible: !this.state.modalVisible
-        });
-        this.props.addLocation(weather);
-      }
-    });
+    const location = {
+      id: city.id,
+      callback: this.toggleModal
+    }
+
+    this.props.addLocation(location);
   }
 
   render () {

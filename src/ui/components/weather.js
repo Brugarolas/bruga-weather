@@ -15,7 +15,7 @@ const Weather = (props) => {
   const { weather } = props;
 
   const click = () => {
-    props.removeLocation(weather.id);
+    props.removeLocation({ id: weather.id });
   }
 
   return (

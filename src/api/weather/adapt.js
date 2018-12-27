@@ -18,11 +18,7 @@ const flag = (country, style = 'shiny', size = 24) => { // styles flat and shiny
   return `https://www.countryflags.io/${country}/${style}/${size}.png`; // https://countryflags.io/
 }
 
-const transformWeather = (weather) => {
-  if (weather.cod !== 200) {
-    return { ...weather, error: true };
-  }
-
+const transformSimple = (weather) => {
   return {
     id: weather.id,
     city: weather.name,
@@ -39,6 +35,14 @@ const transformWeather = (weather) => {
   }
 }
 
+const transformWeather = (weather) => {
+  if (weather.cod !== 200) {
+    return { ...weather, error: true };
+  }
+
+  return transformSimple(weather);
+}
+
 const transformCity = (city) => {
   return {
     id: city.id,
@@ -51,4 +55,4 @@ const transformCity = (city) => {
   }
 }
 
-export default { transformWeather, transformCity };
+export default { transformSimple, transformWeather, transformCity };

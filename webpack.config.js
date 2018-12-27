@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const PackRemoteFilePlugin = require('./node/pack-remote-file-plugin.js');
+const RemoteFilePlugin = require('remote-file-webpack-plugin');
 
 module.exports = {
   entry: ['@babel/polyfill', './src/index.js'],
@@ -57,11 +57,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html",
+      template: './src/index.html',
+      filename: './index.html',
+      favicon: './src/assets/logo.png',
       inject: false
     }),
-    new PackRemoteFilePlugin([
+    new RemoteFilePlugin([
       {
         url: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Roboto:100,300,400,500,700,900',
         filepath: 'styles/fonts.css',

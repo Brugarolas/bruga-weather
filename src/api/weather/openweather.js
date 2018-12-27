@@ -16,15 +16,16 @@ const paramsToUrl = (params = {}) => Object.entries(params).map((param) => param
 
 const paramToUrl = (name, value) => name + (value ? '=' + value : '');
 
-/* Public API */
+/* API Calls */
 const search = async (url) => {
   let response = await fetch(url, { cache: 'default' });
 
   let json = await response.json();
 
-  return Adapt.transformWeather(json);
+  return json.list ? json.list.map(Adapt.transformSimple) : Adapt.transformWeather(json);
 }
 
+/* Public API */
 const searchCityByName = async (city) => {
   let url = buildApiUrl('weather', { q: city });
 
@@ -37,5 +38,16 @@ const searchCityById = async (id) => {
   return await search(url);
 }
 
+const searchCitiesByIds = async (ids) => {
+  let url = buildApiUrl('group', { id: ids.join(',') });
+
+  return await search(url, true);
+  /*let response = await fetch(url, { cache: 'default' });
+
+  let json = await response.json();
+
+  console.log(json);*/
+}
+
 /* Exports */
-export default { searchCityById, searchCityByName };
+export default { searchCityById, searchCitiesByIds, searchCityByName };
