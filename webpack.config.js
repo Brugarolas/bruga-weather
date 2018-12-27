@@ -7,7 +7,7 @@ module.exports = (env, args) => {
   const isProduction = args.mode === 'production';
 
   const config = {
-    entry: ['@babel/polyfill', './src/index.js'],
+    entry: './src/index.js',
     stats: { children: false },
     module: {
       rules: [
@@ -17,8 +17,8 @@ module.exports = (env, args) => {
           exclude: /node_modules/,
           options: {
             presets: [
-              ['minify', { builtIns: false } ],
-              [ '@babel/env', { 'targets': { 'browsers': [ 'last 2 versions' ] }, 'modules': false } ],
+              ['minify', { builtIns: true } ],
+              [ '@babel/env', { targets: { browsers: [ 'last 2 versions' ] }, useBuiltIns: 'usage', modules: false } ],
               '@babel/react'
             ],
             plugins: [
