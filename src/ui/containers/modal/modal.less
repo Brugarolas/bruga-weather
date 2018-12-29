@@ -1,13 +1,22 @@
 @import (less, reference) '../../../assets/styles/colors.less';
+@import (less, reference) '../../../assets/styles/breakpoints.less';
 
 .modal {
+  display: block;
   position: relative;
+  box-sizing: border-box;
   background-color: @color-background;
-  width: 480px;
+  width: 90%;
+  max-width: 520px;
   margin: 200px auto;
-  padding: 20px 50px;
+  padding: 20px 20px;
   text-align: center;
   box-shadow: 0 0 5px @color-shadow-darker;
   border-radius: 4px;
   overflow: hidden;
+
+  @media @tablet-above {
+    padding: 20px 50px;
+    max-width: 580px;
+  }
 }

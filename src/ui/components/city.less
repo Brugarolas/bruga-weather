@@ -1,5 +1,6 @@
 @import (less, reference) '../../assets/styles/colors.less';
 @import (less, reference) '../../assets/styles/mixins.less';
+@import (less, reference) '../../assets/styles/breakpoints.less';
 
 .city {
   display: flow-root;
@@ -19,19 +20,22 @@
   &:hover {
     border-color: @color-dark-gray;
     box-shadow: 0 1/8rem 1/8rem 0 @color-shadow-dark;
-    transform: scale(1.05);
+
+    @media @tablet-above {
+      transform: scale(1.05);
+    }
   }
 
   .column-1 {
     display: inline-block;
     float: left;
-    width: 50%;
+    width: calc(100% - 50px);
     text-align: left;
   }
   .column-2 {
     display: inline-block;
     float: right;
-    width: 50%;
+    width: 50px;
     text-align: right;
   }
 
@@ -39,16 +43,29 @@
     font-size: 18px;
     font-weight: 400;
     color: @color-text-light;
+
+    @media @small-down {
+      font-size: 16px;
+    }
   }
   .flag {
     display: inline-block;
     vertical-align: middle;
     height: 24px;
+    width: 24px;
     margin-bottom: 2px;
+
+    @media @small-down {
+      height: 22px;
+      width: 22px;
+    }
   }
-  .desc {
+  .descr {
     font-size: 16px;
-    color: @color-text-light;
+
+    @media @small-down {
+      font-size: 14px;
+    }
   }
 
   .temp {
@@ -59,6 +76,11 @@
       font-size: 40px;
       line-height: 40px;
       font-weight: 600;
+
+      @media @small-down {
+        font-size: 36px;
+        line-height: 36px;
+      }
     }
     .metrics {
       .fontRoboto();

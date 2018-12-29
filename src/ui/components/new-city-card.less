@@ -1,11 +1,15 @@
 @import (less, reference) "../../assets/styles/colors.less";
 @import (less, reference) "../../assets/styles/mixins.less";
+@import (less, reference) '../../assets/styles/breakpoints.less';
+
+@color-orange: #ff922b;
 
 .new-city-card {
   position: relative;
   display: inline-block;
   text-align: center;
-  width: 280px;
+  width: 90%;
+  max-width: 240px;
   background-color: @color-white;
   border: 1px solid @color-gray;
   border-radius: 4px;
@@ -14,8 +18,17 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 
+  @media @tablet-above {
+    max-width: 280px;
+  }
+
   &:hover {
-    transform: scale(1.1);
+    border-color: @color-dark-gray;
+    box-shadow: 0 1/8rem 1/8rem 0 @color-shadow-dark;
+
+    @media @tablet-above {
+      transform: scale(1.1);
+    }
   }
 
   .container {
@@ -23,24 +36,41 @@
     padding: 10px 25px;
 
     &.icons {
-      height: 172px;
+      height: 142px;
+
+      @media @tablet-above {
+        height: 172px;
+      }
     }
 
     .icon-rain {
       position: absolute;
-      width: 200px;
-      height: 200px;
-      top: -50px;
-      left: calc(50% - 200px/2);
+      width: 174px;
+      height: 174px;
+      top: -46px;
+      left: calc(50% - 174px/2);
       z-index: 3;
+
+      @media @tablet-above {
+        width: 200px;
+        height: 200px;
+        top: -50px;
+        left: calc(50% - 200px/2);
+      }
     }
     .icon-city {
       position: absolute;
-      font-size: 69px;
-      bottom: 20px;
-      left: calc(50% - 42px);
-      color: #ff922b;
+      font-size: 64px;
+      bottom: 18px;
+      left: calc(50% - 35px);
+      color: @color-orange;
       z-index: 2;
+
+      @media @tablet-above {
+        font-size: 69px;
+        bottom: 20px;
+        left: calc(50% - 42px);
+      }
     }
 
     .title {

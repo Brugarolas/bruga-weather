@@ -26,10 +26,10 @@ const Weather = (props) => {
       </div>
 
       <div className="column-2">
-        <Icon daytime={weather.daytime} weather={weather.descr} />
-      </div>
+        <div className="weather-icon-wrapper">
+          <Icon daytime={weather.daytime} weather={weather.descr} />
+        </div>
 
-      <div className="column-3">
         <div className="temp">
           <span className="units">{ weather.temp}</span>
           <span className="metrics">°C</span>

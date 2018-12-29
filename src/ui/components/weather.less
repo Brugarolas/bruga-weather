@@ -1,68 +1,115 @@
 @import (less, reference) '../../assets/styles/colors.less';
 @import (less, reference) '../../assets/styles/mixins.less';
+@import (less, reference) '../../assets/styles/breakpoints.less';
 
 .weather {
   position: relative;
-  display: flow-root;
-  width: 80%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 90%;
   max-width: 1200px;
   background-color: @color-white;
   border: 1px solid @color-gray;
   border-radius: 4px;
   margin: 10px auto;
-  padding: 10px 50px;
+  padding: 10px 25px;
   box-shadow: 0 1/8rem 1/8rem 0 @color-shadow;
+
+  @media @tablet-above {
+    padding: 10px 50px;
+    width: 80%;
+  }
+
+  @media @small-down {
+    flex-direction: column;
+  }
 
   .column-1 {
     display: inline-block;
-    float: left;
-    width: 200px;
     text-align: left;
-    margin-top: 16px; //Temporary
+
+    @media @small-down {
+      text-align: center;
+    }
   }
   .column-2 {
     display: inline-block;
-    float: left;
-    width: calc(50% - 200px);
-    text-align: left;
-  }
-  .column-3 {
-    display: inline-block;
-    float: right;
-    width: 50%;
+    flex-grow: 1;
     text-align: right;
+    margin-right: 19px;
+
+    @media @tablet-above {
+      margin-right: 22px;
+    }
+
+    @media @small-down {
+      margin-right: 0;
+      margin-top: 8px;
+    }
   }
 
   .name {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     color: @color-text-light;
+
+    @media @tablet-above {
+      font-size: 20px;
+    }
   }
   .flag {
     display: inline-block;
     vertical-align: middle;
-    height: 32px;
-    margin-bottom: 1px;
+    height: 24px;
+    width: 24px;
+
+    @media @tablet-above {
+      height: 32px;
+      width: 32px;
+    }
   }
   .desc {
-    font-size: 16px;
+    font-size: 14px;
     color: @color-text-light;
+
+    @media @tablet-above {
+      font-size: 16px;
+    }
+  }
+
+  .weather-icon-wrapper {
+    display: inline-block;
   }
 
   .temp {
     position: relative;
+    display: inline-block;
 
     .units {
+      display: inline-block;
       .fontOpenSans();
-      font-size: 64px;
       font-weight: 400;
+      font-size: 48px;
+      width: 70px;
+
+      @media @tablet-above {
+        font-size: 64px;
+        width: 94px;
+      }
     }
+
     .metrics {
       .fontRoboto();
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 300;
       position: absolute;
-      top: 16px;
+      top: 14px;
+
+      @media @tablet-above {
+        font-size: 18px;
+        top: 16px;
+      }
     }
   }
 

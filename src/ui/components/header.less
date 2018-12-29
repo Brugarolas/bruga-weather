@@ -1,5 +1,6 @@
 @import (less, reference) "../../assets/styles/colors.less";
 @import (less, reference) "../../assets/styles/mixins.less";
+@import (less, reference) '../../assets/styles/breakpoints.less';
 
 .header {
   display: block;
@@ -8,10 +9,24 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 12px 50px;
+  height: 68px;
+  padding: 12px 25px;
   background-color: @color-white;
   box-shadow: 0 1/4rem 1/8rem 0 @color-shadow;
   z-index: 5;
+
+  &.flex-box {
+    display: flex;
+    align-items: center;
+  }
+
+  @media @mobile-above {
+    padding: 12px 50px;
+  }
+
+  @media @desktop-above {
+    padding: 12px 80px;
+  }
 
   .header-title {
     .fontRoboto();
@@ -36,18 +51,30 @@
   }
 
   .author {
+    display: none;
+    flex-grow: 1;
     .fontOpenSans();
-    display: inline-block;
     text-align: right;
-    float: right;
-    font-size: 18px;
-    line-height: 44px;
+    font-size: 16px;
+    line-height: 16px;
     opacity: 0.25;
     font-weight: 100;
 
+    @media @mobile-above {
+      display: inline-block;
+    }
+
+    @media @tablet-above {
+      font-size: 18px;
+    }
+
     .heart {
       color: @color-heart;
-      font-size: 20px;
+      font-size: 18px;
+
+      @media @tablet-above {
+        font-size: 20px;
+      }
     }
   }
 }

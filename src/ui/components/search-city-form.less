@@ -3,7 +3,7 @@
 
 .search-form {
   .fontOpenSans();
-  width: 480px;
+  width: 100%;
 
   .title {
     margin: 5px 0 25px 0;
@@ -14,9 +14,10 @@
   }
 
   .input-search {
-    padding: 6px;
     display: inline-block;
-    width: 320px;
+    box-sizing: border-box;
+    width: calc(100% - 105px);
+    padding: 6px;
     border: 2px solid @main-input-color;
     border-radius: 4px 0 0 4px;
     transition: all .3s ease-in-out;
@@ -27,13 +28,14 @@
   }
 
   .button-search {
+    position: relative;
+    box-sizing: border-box;
+    background-clip: border-box;
+    width: 105px;
     cursor: pointer;
     font-weight: 500;
     font-size: 15px;
     .fontRoboto();
-    position: relative;
-    box-sizing: border-box;
-    background-clip: border-box;
     border: 2px solid @main-input-color;
     background-color: @main-input-color;
     border-radius: 0 4px 4px 0;
