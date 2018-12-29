@@ -1,4 +1,5 @@
 @import (less, reference) '../../assets/styles/colors.less';
+@import (less, reference) "../../assets/styles/mixins.less";
 
 .cancel-button {
   border: none;
@@ -8,6 +9,7 @@
   overflow: visible;
   outline: none;
   text-decoration: none;
+  .disableHighlight();
   background: transparent;
   cursor: pointer;
 

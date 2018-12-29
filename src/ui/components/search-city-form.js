@@ -16,7 +16,9 @@ class SearchCityForm extends Component {
 
   searchCity = (event) => {
     event.preventDefault();
-    this.props.searchCity(this.state.cityName);
+    if (this.state.cityName) {
+      this.props.searchCity(this.state.cityName);
+    }
   }
 
   render () {
