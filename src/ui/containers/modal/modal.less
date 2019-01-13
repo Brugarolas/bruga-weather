@@ -8,15 +8,24 @@
   background-color: @color-background;
   width: 90%;
   max-width: 520px;
-  margin: 200px auto;
+  margin: 120px auto 50px auto;
   padding: 20px 20px;
   text-align: center;
   box-shadow: 0 0 5px @color-shadow-darker;
   border-radius: 4px;
   overflow: hidden;
 
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  max-height: calc(100% - 170px);
+
   @media @tablet-above {
     padding: 20px 50px;
     max-width: 580px;
+  }
+
+  @media @tall-above {
+    margin: 200px auto 130px auto;
+    max-height: calc(100% - 330px);
   }
 }

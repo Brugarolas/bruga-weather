@@ -1,3 +1,6 @@
+## v1.1.1
+Scrollable list of cities in small devices
+
 ## v1.1.0
 Responsive design
 Added local time
