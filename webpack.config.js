@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const RemoteFilePlugin = require('remote-file-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -74,6 +75,9 @@ module.exports = (env, args) => {
       ]
     },
     plugins: [
+      new webpack.DefinePlugin({
+        'TIMEZONE_URL': JSON.stringify('https://brugarolas.openode.io/timezone')
+      }),
       new RemoteFilePlugin([
         {
           url: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Roboto:100,300,400,500,700,900',

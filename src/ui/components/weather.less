@@ -71,10 +71,19 @@
   }
   .desc {
     font-size: 14px;
+    display: inline-block;
     color: @color-text-light;
 
     @media @tablet-above {
       font-size: 16px;
+    }
+
+    & + .desc {
+      margin-left: 5px;
+
+      &::before {
+        content: ' - ';
+      }
     }
   }
 

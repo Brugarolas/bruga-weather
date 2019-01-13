@@ -31,7 +31,8 @@ const transformSimple = (weather) => {
     sunset: new Date(weather.sys.sunset * 1000),
     wind_speed: roundTo2(weather.wind.speed * (3600 / 1000)), //'km/h'
     time: new Date(weather.dt * 1000),
-    daytime: weather.dt > weather.sys.sunrise && weather.dt < weather.sys.sunset
+    daytime: weather.dt > weather.sys.sunrise && weather.dt < weather.sys.sunset,
+    location: weather.coord
   }
 }
 
@@ -48,7 +49,7 @@ const transformCity = (city) => {
     id: city.id,
     name: city.name,
     country: city.sys.country,
-    flag: flag(city.sys.country),
+    flag: flag(city.sys.country, 'shiny', 32),
     temp: kelvinToCelsius(city.main.temp),
     main: city.weather[0].main,
     descr: city.weather[0].description

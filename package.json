@@ -1,6 +1,6 @@
 {
   "name": "bruga-weather",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A React.js personal project made for learning purposes",
   "main": "webpack.config.js",
   "scripts": {
@@ -22,19 +22,19 @@
     "@fortawesome/fontawesome-free": "^5.6.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.0",
-    "@babel/plugin-proposal-class-properties": "^7.2.1",
-    "@babel/polyfill": "7.0.0",
-    "@babel/preset-env": "^7.2.0",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.4",
+    "babel-loader": "^8.0.5",
     "babel-preset-minify": "0.5.0",
     "less": "^3.9.0",
     "style-loader": "^0.23.1",
     "css-loader": "^2.1.0",
     "css-hot-loader": "^1.4.3",
     "less-loader": "^4.1.0",
-    "file-loader": "^2.0.0",
+    "file-loader": "^3.0.1",
     "html-loader": "^0.5.5",
     "mini-css-extract-plugin": "^0.5.0",
     "html-webpack-plugin": "^3.2.0",

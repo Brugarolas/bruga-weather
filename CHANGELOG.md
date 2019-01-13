@@ -1,5 +1,6 @@
-## Working on
+## v1.1.0
 Responsive design
+Added local time
 
 ## v1.0.1
 Support for public paths on webpack build

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import Time from '@/ui/containers/time.js';
 import Icon from './icon.js';
 import CancelButton from '@/ui/components/cancel-button.js';
 import Actions from '@/store/actions/index.js';
@@ -23,6 +24,7 @@ const Weather = (props) => {
       <div className="column-1">
         <div className="name">{ weather.city } (<img className="flag" src={weather.flag} />)</div>
         <div className="desc">{ weather.main }</div>
+        <Time className="desc" location={weather.location} />
       </div>
 
       <div className="column-2">

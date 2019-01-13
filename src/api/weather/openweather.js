@@ -41,12 +41,7 @@ const searchCityById = async (id) => {
 const searchCitiesByIds = async (ids) => {
   let url = buildApiUrl('group', { id: ids.join(',') });
 
-  return await search(url, true);
-  /*let response = await fetch(url, { cache: 'default' });
-
-  let json = await response.json();
-
-  console.log(json);*/
+  return await search(url);
 }
 
 /* Exports */
