@@ -1,5 +1,5 @@
 import actionTypes from '../constants/action-types.js';
-const { ADD_LOCATION, ADD_MULTIPLE_LOCATIONS, REMOVE_LOCATION } = actionTypes;
+const { ADD_LOCATION, ADD_MULTIPLE_LOCATIONS, REMOVE_LOCATION, REPLACE_LOCATIONS } = actionTypes;
 
 const existsById = (store, id) => {
   return !!store.find(element => element.id === id);
@@ -20,6 +20,8 @@ const locationReducer = (state = initialState, action) => {
     case REMOVE_LOCATION:
       if (!existsById(state.locations, action.payload.id)) return state;
       return { ...state, locations: removeById(state.locations, action.payload.id) };
+    case REPLACE_LOCATIONS:
+      return { ...state, locations: action.payload };
     default:
       return state;
   }

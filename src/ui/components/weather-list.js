@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 }
 
 const WeatherList = (props) => {
-  if (!props.weathers || !props.weathers.length) return <></>;
+  if (!props.weathers || !props.weathers.length) return (null);
 
   const weathers = props.weathers.map((weather) =>
     <li key={weather.id} className="weather-element"><Weather weather={weather} /></li>

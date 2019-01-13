@@ -1,6 +1,6 @@
 import OpenWeather from '@/api/weather/openweather.js';
 import actionTypes from '../constants/action-types.js';
-const { ADD_LOCATION, ADD_MULTIPLE_LOCATIONS } = actionTypes;
+const { ADD_LOCATION, ADD_MULTIPLE_LOCATIONS, REPLACE_LOCATIONS } = actionTypes;
 
 const searchWeather = store => next => async action => {
   if (action.type === ADD_LOCATION) {
@@ -9,7 +9,7 @@ const searchWeather = store => next => async action => {
     return next({ ...action, payload: location });
   }
 
-  if (action.type === ADD_MULTIPLE_LOCATIONS) {
+  if (action.type === ADD_MULTIPLE_LOCATIONS || action.type === REPLACE_LOCATIONS) {
     const locations = await OpenWeather.searchCitiesByIds(action.payload); // TODO Handle errors
     return next({ ...action, payload: locations });
   }
