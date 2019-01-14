@@ -30,6 +30,7 @@ class Weather extends PureComponent {
 
   render () {
     const { weather } = this.props;
+    if (!weather) return (null);
 
     return (
       <article className='weather'>

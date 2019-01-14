@@ -15,6 +15,7 @@ const locationReducer = (state = initialState, action) => {
       if (existsById(state.locations, action.payload.id)) return state;
       return { ...state, locations: [...state.locations, action.payload] };
     case ADD_MULTIPLE_LOCATIONS:
+      if (!action.payload || !action.payload.length) return state;
       const locations = action.payload.filter(location => !existsById(state.locations, location.id));
       return locations.length === 0 ? state : { ...state, locations: [...state.locations, ...locations] };
     case REMOVE_LOCATION:

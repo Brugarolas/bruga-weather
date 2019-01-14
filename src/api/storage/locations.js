@@ -11,7 +11,11 @@ class LocationStorage {
   }
 
   save () {
-    this.storage.setItem('locations', this.locations.join(','));
+    if (this.locations.length === 0) {
+      this.storage.removeItem('locations');
+    } else {
+      this.storage.setItem('locations', this.locations.join(','));
+    }
   }
 
   addLocation (location) {

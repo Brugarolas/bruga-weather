@@ -21,7 +21,6 @@ module.exports = (env, args) => {
           exclude: /node_modules/,
           options: {
             presets: [
-              ['minify', { builtIns: true } ],
               [ '@babel/env', { targets: { browsers: [ 'last 2 versions' ] }, useBuiltIns: 'usage', modules: false } ],
               '@babel/react'
             ],
@@ -120,6 +119,12 @@ module.exports = (env, args) => {
       contentBase: './dist'
     }
   };
+
+  if (isProduction) {
+    // Add babel-minify preset only in production
+    const babelRules = config.module.rules.find(rule => rule.loader === 'babel-loader');
+    babelRules.options.presets.unshift(['minify', { builtIns: true } ]);
+  }
 
   return config;
 }

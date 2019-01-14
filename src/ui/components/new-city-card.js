@@ -4,7 +4,7 @@ import './new-city-card.less';
 
 const NewCityCard = (props) => {
   return (
-    <div className="new-city-card" onClick={props.onClick} >
+    <article className="new-city-card" onClick={props.onClick} >
       <div className="container icons">
         <img className="icon-rain" src={rainy6} />
         <i className="fas fa-city icon-city"></i>
@@ -13,7 +13,7 @@ const NewCityCard = (props) => {
         <h4 className="title">New Location</h4>
         <p className="description">Add weather forecast for a new location</p>
       </div>
-    </div>
+    </article>
   );
 }
 
