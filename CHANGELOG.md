@@ -1,4 +1,4 @@
-## Working on
+## v1.2.0
 Auto update weather
 Small optimizations and refactors
 Animations on adding/deleting location

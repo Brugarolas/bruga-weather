@@ -1,6 +1,6 @@
 {
   "name": "bruga-weather",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A React.js personal project made for learning purposes",
   "main": "webpack.config.js",
   "scripts": {
