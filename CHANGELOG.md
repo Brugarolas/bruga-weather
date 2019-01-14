@@ -1,5 +1,6 @@
 ## Working on
 Auto update weather
+Small optimizations and refactors
 
 ## v1.1.1
 Scrollable list of cities in small devices

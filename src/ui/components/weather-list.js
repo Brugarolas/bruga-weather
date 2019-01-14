@@ -1,24 +1,33 @@
-import React from 'react';
-import { connect } from "react-redux";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { getLocationsIds } from '@/store/selectors/index.js';
 import Weather from './weather.js';
 import './weather-list.less';
 
 const mapStateToProps = (state) => {
   return {
-    weathers: state.locations
+    weathersIds: getLocationsIds(state)
   }
 }
 
-const WeatherList = (props) => {
-  if (!props.weathers || !props.weathers.length) return (null);
+class WeatherList extends PureComponent {
+  constructor (props) {
+    super(props);
+  }
 
-  const weathers = props.weathers.map((weather) =>
-    <li key={weather.id} className="weather-element"><Weather weather={weather} /></li>
-  );
+  render () {
+    const { weathersIds } = this.props;
 
-  return (
-    <ul className="weather-list">{ weathers }</ul>
-  );
+    if (!weathersIds || !weathersIds.length) return (null);
+
+    const weathers = weathersIds.map((weatherId) =>
+      <li key={weatherId} className="weather-element"><Weather weatherId={weatherId} /></li>
+    );
+
+    return (
+      <ul className="weather-list">{ weathers }</ul>
+    );
+  }
 }
 
 const ConnectedWeatherList = connect(mapStateToProps)(WeatherList);

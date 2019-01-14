@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from "react-redux";
+import { getLocationById } from '@/store/selectors/index.js';
 import Time from '@/ui/containers/time.js';
 import Icon from './icon.js';
 import CancelButton from '@/ui/components/cancel-button.js';
 import Actions from '@/store/actions/index.js';
 import './weather.less';
+
+const mapStateToProps = (state, props) => ({
+  weather: getLocationById(state, props.weatherId)
+});
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -12,37 +17,45 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const Weather = (props) => {
-  const { weather } = props;
-
-  const click = () => {
-    props.removeLocation({ id: weather.id });
+class Weather extends PureComponent {
+  constructor (props) {
+    super(props);
   }
 
-  return (
-    <article className='weather'>
-      <div className="column-1">
-        <div className="name">{ weather.city } (<img className="flag" src={weather.flag} />)</div>
-        <div className="desc">{ weather.main }</div>
-        <Time className="desc" location={weather.location} />
-      </div>
+  click = () => {
+    const { weatherId, removeLocation } = this.props;
 
-      <div className="column-2">
-        <div className="weather-icon-wrapper">
-          <Icon daytime={weather.daytime} weather={weather.descr} />
+    removeLocation({ id: weatherId });
+  }
+
+  render () {
+    const { weather } = this.props;
+
+    return (
+      <article className='weather'>
+        <div className="column-1">
+          <div className="name">{ weather.city } (<img className="flag" src={weather.flag} />)</div>
+          <div className="desc">{ weather.main }</div>
+          <Time className="desc" location={weather.location} />
         </div>
 
-        <div className="temp">
-          <span className="units">{ weather.temp}</span>
-          <span className="metrics">°C</span>
-        </div>
-      </div>
+        <div className="column-2">
+          <div className="weather-icon-wrapper">
+            <Icon daytime={weather.daytime} weather={weather.descr} />
+          </div>
 
-      <CancelButton onClick={click} />
-    </article>
-  );
+          <div className="temp">
+            <span className="units">{ weather.temp}</span>
+            <span className="metrics">°C</span>
+          </div>
+        </div>
+
+        <CancelButton onClick={this.click} />
+      </article>
+    );
+  }
 }
 
-const ConnectedWeather = connect(undefined, mapDispatchToProps)(Weather);
+const ConnectedWeather = connect(mapStateToProps, mapDispatchToProps)(Weather);
 
 export default ConnectedWeather;
