@@ -8,6 +8,8 @@ const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plug
 module.exports = (env, args) => {
   const isProduction = args.mode === 'production';
 
+  const isAnalyzer = isProduction && args.analyzer;
+
   const publicPath = isProduction ? '/' + (args.publicPath ? args.publicPath + '/' : '') : '/';
 
   const config = {
@@ -124,6 +126,11 @@ module.exports = (env, args) => {
     // Add babel-minify preset only in production
     const babelRules = config.module.rules.find(rule => rule.loader === 'babel-loader');
     babelRules.options.presets.unshift(['minify', { builtIns: true } ]);
+  }
+
+  if (isAnalyzer) {
+    const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+    config.plugins.push(new BundleAnalyzerPlugin());
   }
 
   return config;
