@@ -2,18 +2,26 @@ import React, { Component } from 'react';
 import CancelButton from '@/ui/components/cancel-button.js';
 import './modal.less';
 
-const Modal = (props) => {
-  const prevent = (event) => {
+class Modal extends Component {
+  constructor (props) {
+    super(props);
+  }
+
+  prevent = (event) => {
     event.preventDefault();
     event.stopPropagation();
   }
 
-  return (
-    <div className='modal' onClick={prevent}>
-      { props.children }
-      <CancelButton onClick={props.handleOnClose} />
-    </div>
-  );
+  render () {
+    let { children, handleOnClose } = this.props;
+
+    return (
+      <div className='modal' onClick={this.prevent}>
+        { children }
+        <CancelButton onClick={handleOnClose} />
+      </div>
+    )
+  }
 }
 
 export default Modal;

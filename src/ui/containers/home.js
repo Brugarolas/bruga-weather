@@ -8,6 +8,7 @@ import CityList from '@/ui/components/city-list.js';
 import NewCityCard from '@/ui/components/new-city-card.js';
 import OpenCities from '@/api/weather/cities.js';
 import Actions from '@/store/actions/index.js';
+import counter from '@/api/utils/counter.js';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -18,19 +19,28 @@ const mapDispatchToProps = dispatch => {
 class Home extends PureComponent {
   constructor (props) {
     super(props);
+    this.counter = counter();
   }
 
   state = {
     modalVisible: false,
     searching: false,
-    lastSearch: ''
+    lastSearch: '',
+    cities: []
   }
 
   toggleModal = () => {
-    this.setState({
-      modalVisible: !this.state.modalVisible,
-      cities: []
-    });
+    if (this.state.modalVisible) {
+      this.setState({
+        modalVisible: false,
+        cities: []
+      });
+    } else {
+      this.setState({
+        modalVisible: true,
+        modalKey: this.counter.next().value
+      });
+    }
   }
 
   searchCity = (cityName) => {
@@ -70,7 +80,7 @@ class Home extends PureComponent {
         <ModalContainer visible={this.state.modalVisible} exit={this.toggleModal}>
           {
             this.state.modalVisible &&
-            <Modal handleOnClose={this.toggleModal}>
+            <Modal key={this.state.modalKey} handleOnClose={this.toggleModal}>
               <SearchCityForm searchCity={this.searchCity} isSearching={this.state.searching} />
               <CityList cities={this.state.cities} clickCity={this.selectCity} />
             </Modal>

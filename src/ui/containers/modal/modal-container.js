@@ -1,10 +1,10 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import './modal-container.less';
+import FlipMove from 'react-flip-move';
+import ModalOverlay from './modal-overlay';
 
 const ModalContainer = (props) => {
   let { children, visible, exit } = props;
-  let classNames = [ 'modal-container', visible ? undefined : 'hidden' ].filter(Boolean).join(' ');
   let modalContainer = document.getElementById('modals');
 
   const click = (event) => {
@@ -19,7 +19,14 @@ const ModalContainer = (props) => {
     }
   }
 
-  return createPortal(<div className={classNames} onClick={click} onKeyDown={keyDown}>{ children }</div>, modalContainer);
+  return createPortal(
+    <ModalOverlay visible={visible} onClick={click} onKeyDown={keyDown}>
+      <FlipMove typeName={null} duration={300}>
+        { children }
+      </FlipMove>
+    </ModalOverlay>,
+    modalContainer
+  );
 }
 
 export default ModalContainer;

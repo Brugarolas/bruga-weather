@@ -1,3 +1,6 @@
+## Working on
+Animations and UX improvements in searcher
+
 ## v1.2.0
 Auto update weather
 Small optimizations and refactors
