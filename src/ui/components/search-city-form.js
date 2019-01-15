@@ -16,6 +16,7 @@ class SearchCityForm extends Component {
 
   searchCity = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     if (this.state.cityName) {
       this.props.searchCity(this.state.cityName);
     }
@@ -28,9 +29,15 @@ class SearchCityForm extends Component {
           Add weather forecast for a new location
         </h4>
         <div className="search-box">
-          <input className="input-search" type="text" value={this.state.cityName} onChange={this.handleChangeCity} />
-          <button className="button-search" type="submit">
-            <i className="fas fa-search icon" />
+          <input className="input-search" type="text"
+            value={this.state.cityName} onChange={this.handleChangeCity}
+            ref={(input) => { input && input.focus(); }} />
+
+          <button className="button-search" type="submit" onClick={this.searchCity}>
+            { this.props.isSearching
+              ? <i className="fas fa-spinner fa-spin icon" />
+              : <i className="fas fa-search icon" />
+            }
             <span>Search</span>
           </button>
         </div>

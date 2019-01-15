@@ -94,7 +94,7 @@ module.exports = (env, args) => {
         filename: './index.html',
         favicon: './src/assets/logo.png',
         meta: {
-          viewport: 'width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no'
+          viewport: 'user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no'
         },
         inject: true
       }),

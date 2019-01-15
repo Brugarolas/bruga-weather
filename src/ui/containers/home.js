@@ -21,7 +21,9 @@ class Home extends PureComponent {
   }
 
   state = {
-    modalVisible: false
+    modalVisible: false,
+    searching: false,
+    lastSearch: ''
   }
 
   toggleModal = () => {
@@ -32,9 +34,19 @@ class Home extends PureComponent {
   }
 
   searchCity = (cityName) => {
+    if (this.state.searching || this.state.lastSearch === cityName) {
+      return;
+    }
+
+    this.setState({
+      searching: true,
+      lastSearch: cityName
+    });
+
     OpenCities.searchCity(cityName).then(cities => {
       this.setState({
-        cities: cities
+        cities: cities,
+        searching: false
       });
     });
   }
@@ -55,11 +67,11 @@ class Home extends PureComponent {
           <NewCityCard onClick={this.toggleModal} />
         </WeatherList>
 
-        <ModalContainer visible={this.state.modalVisible}>
+        <ModalContainer visible={this.state.modalVisible} exit={this.toggleModal}>
           {
             this.state.modalVisible &&
             <Modal handleOnClose={this.toggleModal}>
-              <SearchCityForm searchCity={this.searchCity} />
+              <SearchCityForm searchCity={this.searchCity} isSearching={this.state.searching} />
               <CityList cities={this.state.cities} clickCity={this.selectCity} />
             </Modal>
           }
