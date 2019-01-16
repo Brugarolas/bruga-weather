@@ -34,6 +34,7 @@ class Home extends PureComponent {
 
     this.setState({
       modalVisible: false,
+      lastSearch: '',
       cities: []
     });
   }
@@ -68,7 +69,7 @@ class Home extends PureComponent {
   selectCity = (city) => {
     const location = {
       id: city.id,
-      callback: this.toggleModal
+      callback: this.closeModal
     }
 
     this.props.addLocation(location);
