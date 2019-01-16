@@ -4,6 +4,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const RemoteFilePlugin = require('remote-file-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
+const WebappWebpackPlugin = require('webapp-webpack-plugin');
 
 module.exports = (env, args) => {
   const isProduction = args.mode === 'production';
@@ -92,11 +93,31 @@ module.exports = (env, args) => {
       new HtmlWebPackPlugin({
         template: './src/index.html',
         filename: './index.html',
-        favicon: './src/assets/logo.png',
         meta: {
-          viewport: 'user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no'
+          viewport: 'user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no',
+          description: 'Simple weather app made with <3 by Andrés Brugarolas'
         },
         inject: true
+      }),
+      new WebappWebpackPlugin({
+        logo: './src/assets/logo.png',
+        cache: true,
+        prefix: 'icons/',
+        inject: true,
+        favicons: {
+          appName: 'Bruga Weather',
+          appDescription: 'Simple weather app made with <3 by Andrés Brugarolas',
+          icons: {
+            android: true,
+            appleIcon: true,
+            appleStartup: true,
+            coast: false,
+            favicons: true,
+            firefox: false,
+            windows: false,
+            yandex: false
+          }
+        }
       }),
       new HtmlWebpackIncludeAssetsPlugin({
         assets: ['styles/fonts.css'],
