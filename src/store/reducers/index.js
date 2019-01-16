@@ -1,8 +1,14 @@
 import actionTypes from '../constants/action-types.js';
-const { ADD_LOCATION, ADD_MULTIPLE_LOCATIONS, REMOVE_LOCATION, REPLACE_LOCATIONS } = actionTypes;
+const { ADD_LOCATION, ADD_MULTIPLE_LOCATIONS, HIDE_LOCATION, REMOVE_LOCATION, REPLACE_LOCATIONS } = actionTypes;
 
 const existsById = (store, id) => {
   return !!store.find(element => element.id === id);
+}
+
+const hideById = (store, id) => {
+  const element = store.find(element => element.id === id);
+  if (element) element.hidden = true;
+  return store;
 }
 
 const removeById = (store, id) => {
@@ -18,6 +24,9 @@ const locationReducer = (state = initialState, action) => {
       if (!action.payload || !action.payload.length) return state;
       const locations = action.payload.filter(location => !existsById(state.locations, location.id));
       return locations.length === 0 ? state : { ...state, locations: [...state.locations, ...locations] };
+    case HIDE_LOCATION:
+      if (!existsById(state.locations, action.payload.id)) return state;
+      return { ...state, locations: [ ...hideById(state.locations, action.payload.id) ] };
     case REMOVE_LOCATION:
       if (!existsById(state.locations, action.payload.id)) return state;
       return { ...state, locations: removeById(state.locations, action.payload.id) };

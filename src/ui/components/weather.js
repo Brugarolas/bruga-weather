@@ -1,39 +1,22 @@
-import React, { PureComponent } from 'react';
-import { connect } from "react-redux";
-import { getLocationById } from '@/store/selectors/index.js';
-import Time from '@/ui/containers/time.js';
+import React from 'react';
+import SwingComponent from '@/ui/containers/elements/swing-component.js';
+import Time from '@/ui/containers/elements/time-element.js';
 import Icon from './icon.js';
 import CancelButton from '@/ui/components/cancel-button.js';
-import Actions from '@/store/actions/index.js';
 import './weather.less';
 
-const mapStateToProps = (state, props) => ({
-  weather: getLocationById(state, props.weatherId)
-});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    removeLocation: id => dispatch(Actions.removeLocation(id))
-  };
-};
-
-class Weather extends PureComponent {
+class Weather extends SwingComponent {
   constructor (props) {
     super(props);
   }
 
-  click = () => {
-    const { weatherId, removeLocation } = this.props;
-
-    removeLocation({ id: weatherId });
-  }
+  onTrowOut = this.props.onClose.bind(undefined, true);
 
   render () {
-    const { weather } = this.props;
-    if (!weather) return (null);
+    const { weather, onClose } = this.props;
 
     return (
-      <article className='weather'>
+      <article className='weather' ref={(weather) => { weather && this.addElement(weather) }}>
         <div className="column-1">
           <div className="name">{ weather.city } (<img className="flag" src={weather.flag} />)</div>
           <div className="desc">{ weather.main }</div>
@@ -51,12 +34,10 @@ class Weather extends PureComponent {
           </div>
         </div>
 
-        <CancelButton onClick={this.click} />
+        <CancelButton onClick={onClose} />
       </article>
     );
   }
 }
 
-const ConnectedWeather = connect(mapStateToProps, mapDispatchToProps)(Weather);
-
-export default ConnectedWeather;
+export default Weather;

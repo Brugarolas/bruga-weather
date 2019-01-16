@@ -23,7 +23,8 @@
     "react-redux": "^6.0.0",
     "reselect": "^4.0.0",
     "react-flip-move": "^3.0.3",
-    "@fortawesome/fontawesome-free": "^5.6.3"
+    "@fortawesome/fontawesome-free": "^5.6.3",
+    "@andres-brugarolas/swing": "^3.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
