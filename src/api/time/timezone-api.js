@@ -9,11 +9,19 @@ const search = async (url) => {
   return json;
 }
 
+const searchCatchErrors = async (url) => {
+  try {
+    return await search(url);
+  } catch (error) {
+    return { error: true, msg: error };
+  }
+}
+
 /* Public API */
 const searchTimezone = async (lat, lon) => {
   let url = `${BASE_URL}?lat=${lat}&lon=${lon}`;
 
-  return await search(url);
+  return await searchCatchErrors(url);
 }
 
 export default { searchTimezone };

@@ -17,8 +17,10 @@ class Time extends PureComponent {
     let { lat, lon } = this.props.location;
     if (!lat || !lon) return;
 
-    TimezoneAPI.searchTimezone(lat, lon).then(timezone => {
-      const date = new TimezoneDate(timezone);
+    TimezoneAPI.searchTimezone(lat, lon).then(response => {
+      if (response.error) return;
+
+      const date = new TimezoneDate(response);
 
       this.setState({
         hasTimezone: true,
