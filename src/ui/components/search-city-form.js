@@ -29,9 +29,9 @@ class SearchCityForm extends Component {
           Add weather forecast for a new location
         </h4>
         <div className="search-box">
-          <input className="input-search" type="text"
+          <input className="input-search" type="text" autoFocus
             value={this.state.cityName} onChange={this.handleChangeCity}
-            ref={(input) => { input && input.focus(); }} />
+            ref={(ref) => { ref && setTimeout(() => { ref.focus() }); }} />
 
           <button className="button-search" type="submit" onClick={this.searchCity}>
             { this.props.isSearching

@@ -1,6 +1,7 @@
 ## Working on
 Smoother start up
 Animation code simplified
+Fixed searcher animations
 
 ## v1.3.0
 Animations and UX improvements in searcher
