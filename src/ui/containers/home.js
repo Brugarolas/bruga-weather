@@ -26,7 +26,8 @@ class Home extends PureComponent {
     modalVisible: false,
     searching: false,
     lastSearch: '',
-    cities: []
+    cities: [],
+    error: false
   }
 
   closeModal = () => {
@@ -35,7 +36,8 @@ class Home extends PureComponent {
     this.setState({
       modalVisible: false,
       lastSearch: '',
-      cities: []
+      cities: [],
+      error: false
     });
   }
 
@@ -58,10 +60,11 @@ class Home extends PureComponent {
       lastSearch: cityName
     });
 
-    OpenCities.searchCity(cityName).then(cities => {
+    OpenCities.searchCity(cityName).then(response => {
       this.setState({
-        cities: cities,
-        searching: false
+        cities: response.error ? [] : response,
+        searching: false,
+        error: response.error
       });
     });
   }
@@ -86,7 +89,8 @@ class Home extends PureComponent {
           {
             this.state.modalVisible &&
             <Modal key={this.state.modalKey} handleOnClose={this.closeModal}>
-              <SearchCityForm searchCity={this.searchCity} isSearching={this.state.searching} />
+              <SearchCityForm searchCity={this.searchCity}
+                isSearching={this.state.searching} hasError={this.state.error} />
               <CityList cities={this.state.cities} clickCity={this.selectCity} />
             </Modal>
           }

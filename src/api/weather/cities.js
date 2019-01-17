@@ -18,15 +18,28 @@ const paramsToUrl = (params = {}) => Object.entries(params).map((param) => param
 
 const paramToUrl = (name, value) => name + (value ? '=' + value : '');
 
-/* Public API */
-const searchCity = async (city) => {
-  let url = buildApiUrl({ q: city });
-
+/* API Calls */
+const search = async (url) => {
   let response = await fetch(url, { cache: 'default' });
 
   let json = await response.json();
 
   return json.list.map(Adapt.transformCity);
+}
+
+const searchCatchErrors = async (url) => {
+  try {
+    return await search(url);
+  } catch (error) {
+    return { error: true, msg: error };
+  }
+}
+
+/* Public API */
+const searchCity = async (city) => {
+  let url = buildApiUrl({ q: city });
+
+  return await searchCatchErrors(url);
 }
 
 /* Exports */

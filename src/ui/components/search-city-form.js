@@ -22,6 +22,14 @@ class SearchCityForm extends Component {
     }
   }
 
+  iconClassName = () => {
+    const { isSearching, hasError } = this.props;
+
+    if (isSearching) return "fas fa-spinner fa-spin icon";
+    if (hasError) return "fas fa-times icon";
+    return "fas fa-search icon";
+  }
+
   render () {
     return (
       <form className="search-form" onSubmit={this.searchCity}>
@@ -34,10 +42,7 @@ class SearchCityForm extends Component {
             ref={(ref) => { ref && setTimeout(() => { ref.focus() }); }} />
 
           <button className="button-search" type="submit" onClick={this.searchCity}>
-            { this.props.isSearching
-              ? <i className="fas fa-spinner fa-spin icon" />
-              : <i className="fas fa-search icon" />
-            }
+            <i className={this.iconClassName()} />
             <span>Search</span>
           </button>
         </div>

@@ -25,23 +25,31 @@ const search = async (url) => {
   return json.list ? json.list.map(Adapt.transformSimple) : Adapt.transformWeather(json);
 }
 
+const searchCatchErrors = async (url) => {
+  try {
+    return await search(url);
+  } catch (error) {
+    return { error: true, msg: error };
+  }
+}
+
 /* Public API */
 const searchCityByName = async (city) => {
   let url = buildApiUrl('weather', { q: city });
 
-  return await search(url);
+  return await searchCatchErrors(url);
 }
 
 const searchCityById = async (id) => {
   let url = buildApiUrl('weather', { id });
 
-  return await search(url);
+  return await searchCatchErrors(url);
 }
 
 const searchCitiesByIds = async (ids) => {
   let url = buildApiUrl('group', { id: ids.join(',') });
 
-  return await search(url);
+  return await searchCatchErrors(url);
 }
 
 /* Exports */
