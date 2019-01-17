@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
 import Swing from '@andres-brugarolas/swing';
 
-console.log(Swing);
-
 const config = {
   allowedDirections: [Swing.Direction.LEFT],
   throwOutConfidence: (xOffset, yOffset, element) => {

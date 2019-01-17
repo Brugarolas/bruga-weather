@@ -1,6 +1,13 @@
 class LocationStorage {
   constructor() {
     this.storage = window.localStorage;
+    this.initialized = false;
+    this.locations = [];
+  }
+
+  initialize () {
+    if (this.initialized) return;
+    this.initialized = true;
 
     let locations = this.storage.getItem('locations');
     this.locations = locations ? locations.split(',').map(Number) : [] || [];

@@ -12,7 +12,9 @@ const initialState = {
   locations: []
 };
 
-const store = createStore(locationReducer, initialState, applyMiddleware(searchWeather, storageMiddleware));
+const middleware = applyMiddleware(searchWeather, storageMiddleware);
+
+const store = createStore(locationReducer, initialState, middleware);
 
 initialize(store, storage);
 
