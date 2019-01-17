@@ -1,3 +1,7 @@
+## Working on
+Smoother start up
+Animation code simplified
+
 ## v1.3.0
 Animations and UX improvements in searcher
 Added Swing to locations, so we can swipe to delete

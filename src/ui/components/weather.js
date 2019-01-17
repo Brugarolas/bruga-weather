@@ -8,15 +8,14 @@ import './weather.less';
 class Weather extends SwingComponent {
   constructor (props) {
     super(props);
+    this.onTrowOut = this.props.onClose;
   }
-
-  onTrowOut = this.props.onClose.bind(undefined, true);
 
   render () {
     const { weather, onClose } = this.props;
 
     return (
-      <article className='weather' ref={(weather) => { weather && this.addElement(weather) }}>
+      <article className='weather' ref={(weather) => { weather && this.addElement(weather); }}>
         <div className="column-1">
           <div className="name">{ weather.city } (<img className="flag" src={weather.flag} />)</div>
           <div className="desc">{ weather.main }</div>

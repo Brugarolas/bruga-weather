@@ -2,6 +2,7 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import FlipMove from 'react-flip-move';
 import ModalOverlay from './modal-overlay';
+import animations from '@/api/utils/animations.js';
 
 const ModalContainer = (props) => {
   let { children, visible, exit } = props;
@@ -21,7 +22,7 @@ const ModalContainer = (props) => {
 
   return createPortal(
     <ModalOverlay visible={visible} onClick={click} onKeyDown={keyDown}>
-      <FlipMove typeName={null} duration={300}>
+      <FlipMove typeName={null} duration={300} leaveAnimation={animations.fade}>
         { children }
       </FlipMove>
     </ModalOverlay>,

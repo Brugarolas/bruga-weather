@@ -14,6 +14,11 @@ const config = {
   velocity: 1
 }
 
+const skipFlipAnimation = (event) => {
+  const element = event.target.parentElement;
+  element.classList.add('skipFlipAnimation');
+}
+
 class SwingComponent extends PureComponent {
   constructor (props) {
     super(props);
@@ -30,7 +35,8 @@ class SwingComponent extends PureComponent {
     const card = this.stack.createCard(element);
     element.style['cursor'] = 'pointer';
 
-    card.on('throwout', this.onTrowOut);
+    card.on('throwout', skipFlipAnimation);
+    card.on('throwoutend', this.onTrowOut);
   }
 }
 

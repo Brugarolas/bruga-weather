@@ -4,16 +4,8 @@ import { getLocationsIds, hasLocationById } from '@/store/selectors/index.js';
 import Detect from '@/api/utils/detect.js';
 import FlipMove from 'react-flip-move';
 import WeatherElement from '@/ui/containers/elements/weather-element.js';
+import animations from '@/api/utils/animations.js';
 import './weather-list.less';
-
-const animations = {
-  elevator: 'elevator',
-  fade: 'fade',
-  accordionVertical: 'accordionVertical',
-  accordionHorizontal: 'accordionHorizontal',
-  none: 'none',
-  default: 'elevator'
-};
 
 const mapStateToProps = (state) => {
   return {
@@ -43,7 +35,10 @@ class WeatherList extends PureComponent {
     ).filter(Boolean) : null;
 
     return (
-      <FlipMove typeName="ul" className="weather-list" >
+      <FlipMove typeName="ul" className="weather-list"
+        duration={350} staggerDurationBy={25} staggerDelayBy={25}
+        enterAnimation={animations.elevator}
+        leaveAnimation={animations.elevator}>
         { hasWeathers && weathers }
         <li key="children" className="weather-element">
           { this.props.children }

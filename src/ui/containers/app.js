@@ -11,12 +11,14 @@ class App extends Component {
 
   render () {
     return (
-      <HandleError>
+      <>
         <Header />
         <Main>
-          <Home />
+          <HandleError>
+            <Home />
+          </HandleError>
         </Main>
-      </HandleError>
+      </>
     );
   }
 }

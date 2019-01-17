@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getLocationById } from '@/store/selectors/index.js';
 import Weather from '@/ui/components/weather.js';
@@ -10,27 +10,23 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    hideLocation: id => dispatch(Actions.hideLocation(id)),
     removeLocation: id => dispatch(Actions.removeLocation(id))
   };
 };
 
-class WeatherElement extends PureComponent {
+class WeatherElement extends Component {
   constructor (props) {
     super(props);
   }
 
-  remove = (skipAnimation = false) => {
-    const { weatherId, hideLocation, removeLocation } = this.props;
+  remove = () => {
+    const { weatherId, removeLocation } = this.props;
 
-    if (!skipAnimation) {
-      hideLocation({ id: weatherId });
-    }
+    removeLocation({ id: weatherId });
+  }
 
-    const duration = skipAnimation ? 200 : 500;
-    setTimeout(() => {
-      removeLocation({ id: weatherId });
-    }, duration);
+  shouldComponentUpdate () {
+    return !this.props.weather;
   }
 
   render () {

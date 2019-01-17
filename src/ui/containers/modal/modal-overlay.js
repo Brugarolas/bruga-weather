@@ -23,19 +23,28 @@ class ModalOverlay extends PureComponent {
 
   componentDidUpdate () {
     let { visible } = this.props;
+
     if (visible) {
-      setTimeout(() => {
-        this.setState({
-          animationVisible: true
-        })
-      });
+      this.enterAnimation();
     } else {
-      setTimeout(() => {
-        this.setState({
-          modalVisible: false
-        })
-      }, 300);
+      this.leaveAnimation();
     }
+  }
+
+  enterAnimation () {
+    setTimeout(() => {
+      this.setState({
+        animationVisible: true
+      })
+    });
+  }
+
+  leaveAnimation () {
+    setTimeout(() => {
+      this.setState({
+        modalVisible: false
+      })
+    }, 300);
   }
 
   render () {
@@ -45,7 +54,6 @@ class ModalOverlay extends PureComponent {
     let classNamesArray = [ 'modal-container' ];
     animationVisible && classNamesArray.push('showAnimation');
     modalVisible && classNamesArray.push('visible');
-    // let classNames = [ 'modal-container', visible ? 'showAnimation' : 'hidden' ].filter(Boolean).join(' ');
 
     let classNames = classNamesArray.join(' ');
 
