@@ -1,3 +1,5 @@
+import fetch from '@/api/utils/fetch.js';
+
 const BASE_URL = TIMEZONE_URL || 'http://localhost/timezone';
 
 /* API Calls */

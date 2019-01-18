@@ -110,12 +110,14 @@
 
     .metrics {
       .fontRoboto();
+      width: 17px; // IE11 fix
       font-size: 16px;
       font-weight: 300;
       position: absolute;
       top: 14px;
 
       @media @tablet-above {
+        width: 25px; // IE11 fix
         font-size: 24px;
         top: 18px;
       }

@@ -24,7 +24,8 @@
     "reselect": "^4.0.0",
     "react-flip-move": "^3.0.3",
     "@fortawesome/fontawesome-free": "^5.6.3",
-    "@andres-brugarolas/swing": "^3.1.4"
+    "@andres-brugarolas/swing": "^3.1.4",
+    "unfetch": "^4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",

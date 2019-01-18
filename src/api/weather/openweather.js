@@ -1,4 +1,5 @@
 import Adapt from './adapt.js';
+import fetch from '@/api/utils/fetch.js';
 
 const API_URL = 'https://api.openweathermap.org/data/2.5/';
 

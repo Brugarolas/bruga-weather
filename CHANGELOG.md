@@ -3,6 +3,8 @@ Smoother start up
 Animation code simplified
 Fixed searcher animations
 Error handling
+Style fixes in older browsers
+Fixes IE11
 
 ## v1.3.0
 Animations and UX improvements in searcher

@@ -22,7 +22,7 @@
     padding: 10px 45px 10px 25px;
   }
 
-  &::after {
+  &::after { // Old browsers fix
     content: "";
     clear: both;
     display: table;
@@ -94,6 +94,7 @@
     }
     .metrics {
       .fontRoboto();
+      width: 21px; // IE11 fix
       font-size: 20px;
       font-weight: 300;
       position: absolute;

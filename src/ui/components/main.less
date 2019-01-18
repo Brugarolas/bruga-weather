@@ -2,6 +2,8 @@
 @import (less, reference) "../../assets/styles/mixins.less";
 
 .main {
+  display: block; // IE11 fix
+  width: 100%; // IE11 fix
   .fontRoboto();
   text-align: center;
   color: @color-text;
