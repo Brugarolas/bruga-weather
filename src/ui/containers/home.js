@@ -8,6 +8,7 @@ import CityList from '@/ui/components/city-list.js';
 import NewCityCard from '@/ui/components/new-city-card.js';
 import OpenCities from '@/api/weather/cities.js';
 import Actions from '@/store/actions/index.js';
+import Detect from '@/api/utils/detect.js';
 import counter from '@/api/utils/counter.js';
 
 const mapDispatchToProps = dispatch => {
@@ -66,6 +67,10 @@ class Home extends PureComponent {
         searching: false,
         error: response.error
       });
+
+      if (Detect.isTouchDevice && !response.error && response.length) {
+        setTimeout(() => { document.activeElement.blur(); });
+      }
     });
   }
 
