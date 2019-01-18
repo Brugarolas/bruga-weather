@@ -11,12 +11,16 @@
   border: 1px solid @color-gray;
   border-radius: 4px;
   margin: 10px auto;
-  padding: 10px 25px;
+  padding: 10px 35px 10px 15px;
   box-sizing: border-box;
   box-shadow: 0 1/8rem 1/8rem 0 @color-shadow;
   cursor: pointer;
   .disableHighlight();
   transition: all 0.3s ease-in-out;
+
+  @media @tablet-above {
+    padding: 10px 45px 10px 25px;
+  }
 
   &:hover {
     border-color: @color-dark-gray;
@@ -30,13 +34,13 @@
   .column-1 {
     display: inline-block;
     float: left;
-    width: calc(100% - 50px);
+    width: calc(100% - 60px);
     text-align: left;
   }
   .column-2 {
     display: inline-block;
     float: right;
-    width: 50px;
+    width: 60px;
     text-align: right;
   }
 
@@ -71,7 +75,6 @@
 
   .temp {
     position: relative;
-    margin-right: 10px;
 
     .units {
       font-size: 40px;
