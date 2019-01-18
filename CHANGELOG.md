@@ -1,4 +1,4 @@
-## Working on
+## v1.4.0
 Smoother start up
 Animation code simplified
 Fixed searcher animations
