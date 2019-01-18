@@ -11,7 +11,7 @@ class SearchCityForm extends Component {
   }
 
   handleChangeCity = (event) => {
-    this.setState({cityName: event.target.value});
+    this.setState({ cityName: event.target.value });
   }
 
   searchCity = (event) => {

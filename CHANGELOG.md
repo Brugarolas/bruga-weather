@@ -1,3 +1,6 @@
+## v1.4.1
+Mobile fixes
+
 ## v1.4.0
 Smoother start up
 Animation code simplified

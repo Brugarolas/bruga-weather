@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server --open --config ./webpack.config.js --mode development",
+    "remote": "webpack-dev-server --hot --host 0.0.0.0 --port 3000 --config ./webpack.config.js --mode development",
     "build": "webpack -p --mode production",
     "analyzer": "webpack -p --mode production --analyzer",
     "gh-pages": "webpack -p --mode production --publicPath bruga-weather"
@@ -24,7 +25,7 @@
     "reselect": "^4.0.0",
     "react-flip-move": "^3.0.3",
     "@fortawesome/fontawesome-free": "^5.6.3",
-    "@andres-brugarolas/swing": "^3.1.4",
+    "@andres-brugarolas/swing": "^3.1.5",
     "unfetch": "^4.0.1"
   },
   "devDependencies": {
