@@ -22,6 +22,12 @@
     padding: 10px 45px 10px 25px;
   }
 
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
   &:hover {
     border-color: @color-dark-gray;
     box-shadow: 0 1/8rem 1/8rem 0 @color-shadow-dark;
