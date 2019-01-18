@@ -1,6 +1,6 @@
 {
   "name": "bruga-weather",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Simple weather app made with <3 by Andrés Brugarolas",
   "main": "webpack.config.js",
   "scripts": {
