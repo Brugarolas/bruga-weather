@@ -1,3 +1,6 @@
+## v1.4.2
+Time Zone API moved to Heroku
+
 ## v1.4.1
 Mobile fixes
 

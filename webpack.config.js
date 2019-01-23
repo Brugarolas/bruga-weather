@@ -78,7 +78,7 @@ module.exports = (env, args) => {
     },
     plugins: [
       new webpack.DefinePlugin({
-        'TIMEZONE_URL': JSON.stringify('https://brugarolas.openode.io/timezone')
+        'TIMEZONE_URL': JSON.stringify('https://bruga-time-zone.herokuapp.com/timezone')
       }),
       new RemoteFilePlugin([
         {
