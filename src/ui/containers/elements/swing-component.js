@@ -19,24 +19,36 @@ const skipFlipAnimation = (event) => {
   element.classList.add('skipFlipAnimation');
 }
 
+const getStack = (() => {
+  const singletonStack = Swing.Stack(config);
+  return () => singletonStack;
+})();
+
+const singletonStack = Swing.Stack(config);
+
 class SwingComponent extends PureComponent {
   constructor (props) {
     super(props);
-    this.stack = Swing.Stack(config);
+    this.stack = getStack();
   }
 
   componentWillUnmount () {
-    this.stack.destroyAll();
+    this.destroyCurrentCard();
+  }
+
+  destroyCurrentCard () {
+    this.card && this.card.destroy();
   }
 
   addElement (element) {
     if (!element) return;
+    this.destroyCurrentCard();
 
-    const card = this.stack.createCard(element);
+    this.card = this.stack.createCard(element);
     element.style['cursor'] = 'pointer';
 
-    card.on('throwout', skipFlipAnimation);
-    card.on('throwoutend', this.onTrowOut);
+    this.card.on('throwout', skipFlipAnimation);
+    this.card.on('throwoutend', this.onTrowOut);
   }
 }
 
