@@ -36,7 +36,7 @@ class Task {
     this.intervalId = undefined;
     this.requestId = undefined;
     this.visibilityEventsId = undefined;
-    this.visibilityTimestamp = undefined;
+    this.visibilityTimestamp = Date.now();
     this.started = false;
   }
 
