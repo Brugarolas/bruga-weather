@@ -1,3 +1,6 @@
+## Working on
+Page Visibility events for updating
+
 ## v1.4.2
 Time Zone API moved to Heroku
 Small memory optimization

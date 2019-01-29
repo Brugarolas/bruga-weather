@@ -1,30 +1,30 @@
+import Task from '@/api/utils/task.js';
+import ArrayUtils from '@/api/utils/array.js';
 import counter from '@/api/utils/counter.js';
 
 class TimeUpdate {
   constructor () {
     this.counter = counter();
     this.times = [];
+    this.task = new Task(this.timer.bind(this), 5000);
   }
 
   addTime (date, callback) {
-    let id = this.counter.next().value;
+    const id = this.counter.next().value;
     this.times.push({ id, date, callback });
 
     if (this.times.length === 1) {
-      this.startTimer();
+      this.task.start();
     }
 
     return id;
   }
 
   removeTime (id) {
-    let index = this.times.findIndex(time => time.id === id);
-    if (index !== -1) {
-      this.times.splice(index, 1);
-    }
+    const removed = ArrayUtils.removeById(this.times, id);
 
-    if (this.times.length === 0) {
-      this.stopTimer();
+    if (removed && this.times.length === 0) {
+      this.task.stop();
     }
   }
 
@@ -34,15 +34,7 @@ class TimeUpdate {
     this.times.forEach(time => {
       time.date.timeUpdate(now);
       time.callback(time.date);
-    })
-  }
-
-  startTimer () {
-    this.interval = setInterval(this.timer.bind(this), 5000);
-  }
-
-  stopTimer () {
-    clearInterval(this.interval);
+    });
   }
 }
 

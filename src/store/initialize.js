@@ -1,4 +1,5 @@
 import Actions from './actions/index.js';
+import Task from '@/api/utils/task.js';
 
 function initialize (store, locationStorage) {
   locationStorage.initialize();
@@ -18,7 +19,11 @@ function update (store, locationStorage) {
 }
 
 export default (store, locationStorage) => {
-  setTimeout(initialize.bind(undefined, store, locationStorage));
+  const updateTask = update.bind(undefined, store, locationStorage);
+  const task = new Task(updateTask, 300000); // 5 * 60 * 1000 ms = 5 minutes
 
-  setInterval(update.bind(undefined, store, locationStorage), 300000) // 5 * 60 * 1000 ms = 5 minutes
+  setTimeout(() => {
+    initialize(store, locationStorage);
+    task.start();
+  });
 }
