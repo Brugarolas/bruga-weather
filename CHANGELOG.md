@@ -1,5 +1,6 @@
-## Working on
+## v1.5.0
 Page Visibility events for updating
+Some fixes on updating & searching
 
 ## v1.4.2
 Time Zone API moved to Heroku

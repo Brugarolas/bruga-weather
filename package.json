@@ -1,6 +1,6 @@
 {
   "name": "bruga-weather",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "Simple weather app made with <3 by Andrés Brugarolas",
   "main": "webpack.config.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "react-redux": "^6.0.0",
     "reselect": "^4.0.0",
     "react-flip-move": "^3.0.3",
-    "@fortawesome/fontawesome-free": "^5.6.3",
+    "@fortawesome/fontawesome-free": "^5.7.0",
     "@andres-brugarolas/swing": "^3.1.5",
     "unfetch": "^4.0.1"
   },
