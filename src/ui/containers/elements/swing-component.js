@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Swing from '@andres-brugarolas/swing';
 
 const config = {
@@ -26,7 +26,7 @@ const getStack = (() => {
 
 const singletonStack = Swing.Stack(config);
 
-class SwingComponent extends PureComponent {
+class SwingComponent extends Component {
   constructor (props) {
     super(props);
     this.stack = getStack();

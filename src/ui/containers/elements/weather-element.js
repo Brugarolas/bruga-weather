@@ -19,14 +19,16 @@ class WeatherElement extends Component {
     super(props);
   }
 
+  closing = false;
+
   remove = () => {
     const { weatherId, removeLocation } = this.props;
-
+    this.closing = true;
     removeLocation({ id: weatherId });
   }
 
   shouldComponentUpdate () {
-    return !this.props.weather;
+    return !this.closing;
   }
 
   render () {
