@@ -1,4 +1,5 @@
 import Adapt from './adapt.js';
+import ArrayUtils from '@/api/utils/array.js';
 import fetch from '@/api/utils/fetch.js';
 
 const API_URL = 'https://openweathermap.org/data/2.5/find';
@@ -25,7 +26,7 @@ const search = async (url) => {
 
   let json = await response.json();
 
-  return json.list.map(Adapt.transformCity);
+  return ArrayUtils.removeDuplicatesById(json.list).map(Adapt.transformCity);
 }
 
 const searchCatchErrors = async (url) => {

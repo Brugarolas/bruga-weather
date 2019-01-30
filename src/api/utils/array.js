@@ -9,4 +9,17 @@ const removeById = (array, id) => {
   return found;
 }
 
-export default { removeById };
+const removeDuplicatesById = (array) => {
+  const set = new Set();
+
+  return array.filter((element) => {
+    if (set.has(element.id)) {
+      return false;
+    }
+
+    set.add(element.id);
+    return true;
+  });
+}
+
+export default { removeById, removeDuplicatesById };
