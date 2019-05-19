@@ -20,10 +20,10 @@
   "dependencies": {
     "core-js": "^3.0.1",
     "@babel/runtime-corejs3": "^7.4.4",
-    "react": "16.7.0",
-    "react-dom": "16.7.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "redux": "^4.0.1",
-    "react-redux": "6.0.1",
+    "react-redux": "^7.0.3",
     "reselect": "^4.0.0",
     "react-flip-move": "^3.0.3",
     "@fortawesome/fontawesome-free": "^5.8.2",

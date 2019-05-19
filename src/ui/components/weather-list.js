@@ -31,7 +31,9 @@ class WeatherList extends PureComponent {
     const hasWeathers = weathersIds && weathersIds.length > 0;
 
     const weathers = hasWeathers ? weathersIds.map((weatherId) =>
-      <WeatherElement key={weatherId} weatherId={weatherId} />
+      <li key={weatherId} className="weather-element">
+        <WeatherElement weatherId={weatherId} />
+      </li>
     ).filter(Boolean) : null;
 
     return (

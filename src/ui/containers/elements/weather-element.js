@@ -36,9 +36,7 @@ class WeatherElement extends Component {
     if (!weather) return (null);
 
     return (
-      <li className="weather-element">
-        <Weather key={weatherId} weather={weather} onClose={this.remove} />
-      </li>
+      <Weather key={weatherId} weather={weather} onClose={this.remove} />
     );
   }
 }
