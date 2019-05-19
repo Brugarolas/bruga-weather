@@ -24,11 +24,12 @@ module.exports = (env, args) => {
           exclude: /node_modules/,
           options: {
             presets: [
-              [ '@babel/env', { targets: { browsers: [ 'last 2 versions' ] }, useBuiltIns: 'usage', modules: false } ],
+              [ '@babel/env', { targets: { browsers: [ 'last 2 versions' ] }, useBuiltIns: 'usage', corejs: 3, modules: false } ],
               '@babel/react'
             ],
             plugins: [
-              ['@babel/plugin-proposal-class-properties', { 'loose': true }]
+              [ '@babel/transform-runtime', { corejs: 3 } ],
+              [ '@babel/plugin-proposal-class-properties', { loose: true }]
             ]
           }
         },
