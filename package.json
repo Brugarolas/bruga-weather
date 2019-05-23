@@ -25,6 +25,7 @@
     "redux": "^4.0.1",
     "react-redux": "^7.0.3",
     "reselect": "^4.0.0",
+    "immer": "^3.1.2",
     "react-flip-move": "^3.0.3",
     "@fortawesome/fontawesome-free": "^5.8.2",
     "@andres-brugarolas/swing": "^3.1.6",
