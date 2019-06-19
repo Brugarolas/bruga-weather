@@ -12,7 +12,7 @@ class Weather extends SwingComponent {
   }
 
   render () {
-    const { weather, onClose } = this.props;
+    const { weather, onClose, showCancelButton } = this.props;
 
     return (
       <article className='weather' ref={(weather) => { weather && this.addElement(weather); }}>
@@ -33,7 +33,7 @@ class Weather extends SwingComponent {
           </div>
         </div>
 
-        <CancelButton onClick={onClose} />
+        { showCancelButton && <CancelButton onClick={onClose} /> }
       </article>
     );
   }

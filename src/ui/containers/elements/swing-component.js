@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Swing from '@andres-brugarolas/swing';
+import Detect from '@/api/utils/detect.js';
 
 const config = {
   allowedDirections: [Swing.Direction.LEFT],
@@ -24,16 +25,19 @@ const getStack = (() => {
   return () => singletonStack;
 })();
 
-const singletonStack = Swing.Stack(config);
-
 class SwingComponent extends Component {
   constructor (props) {
     super(props);
-    this.stack = getStack();
+
+    if (Detect.isTouchDevice) {
+      this.stack = getStack();
+    }
   }
 
   componentWillUnmount () {
-    this.destroyCurrentCard();
+    if (Detect.isTouchDevice) {
+      this.destroyCurrentCard();
+    }
   }
 
   destroyCurrentCard () {
@@ -41,7 +45,7 @@ class SwingComponent extends Component {
   }
 
   addElement (element) {
-    if (!element) return;
+    if (!element || !Detect.isTouchDevice) return;
     this.destroyCurrentCard();
 
     this.card = this.stack.createCard(element);

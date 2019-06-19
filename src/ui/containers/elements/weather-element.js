@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getLocationById } from '@/store/selectors/index.js';
 import Weather from '@/ui/components/weather.js';
 import Actions from '@/store/actions/index.js';
+import Detect from '@/api/utils/detect.js';
 
 const mapStateToProps = (state, props) => ({
   weather: getLocationById(state, props.weatherId)
@@ -36,7 +37,7 @@ class WeatherElement extends Component {
     if (!weather) return (null);
 
     return (
-      <Weather key={weatherId} weather={weather} onClose={this.remove} />
+      <Weather key={weatherId} weather={weather} onClose={this.remove} showCancelButton={!Detect.isTouchDevice} />
     );
   }
 }
