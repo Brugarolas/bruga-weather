@@ -1,12 +1,14 @@
 import Adapt from './adapt.js';
-import fetch from '@/api/utils/fetch.js';
+import fetch from '@/api/utils/fetch-cache.js';
 
 const API_URL = 'https://api.openweathermap.org/data/2.5/';
 
 const DEFAULT_PARAMS = {
   units: 'metric',
   appid: '6388e851d2f6b148929ce780a67f971a'
-}
+};
+
+const MINUTES_10_IN_MS = 1000 * 60 * 10;
 
 /* Aux API methods */
 const buildApiUrl = (operation, params = {}) => buildUrl(`${API_URL}${operation}`, { ...params, ...DEFAULT_PARAMS });
@@ -19,7 +21,7 @@ const paramToUrl = (name, value) => name + (value ? '=' + value : '');
 
 /* API Calls */
 const search = async (url) => {
-  let response = await fetch(url, { cache: 'default' });
+  let response = await fetch(url, { cache: 'default', localCache: MINUTES_10_IN_MS });
 
   let json = await response.json();
 

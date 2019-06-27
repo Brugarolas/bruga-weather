@@ -1,6 +1,6 @@
 import Adapt from './adapt.js';
 import ArrayUtils from '@/api/utils/array.js';
-import fetch from '@/api/utils/fetch.js';
+import fetch from '@/api/utils/fetch-cache.js';
 
 const API_URL = 'https://openweathermap.org/data/2.5/find';
 
@@ -22,7 +22,7 @@ const paramToUrl = (name, value) => name + (value ? '=' + value : '');
 
 /* API Calls */
 const search = async (url) => {
-  let response = await fetch(url, { cache: 'default' });
+  let response = await fetch(url, { cache: 'default', localCache: true });
 
   let json = await response.json();
 
