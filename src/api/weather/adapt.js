@@ -44,6 +44,20 @@ const transformWeather = (weather) => {
   return transformSimple(weather);
 }
 
+const transformForecast = (forecast, sunrise, sunset) => {
+  const date = new Date(forecast.dt_txt);
+  const time = date.getTime();
+
+  return {
+    temp: round(forecast.main.temp),
+    date, time,
+    timeString: forecast.dt_txt,
+    main: forecast.weather[0].main,
+    descr: forecast.weather[0].description,
+    daytime: time > sunrise && time < sunset
+  };
+}
+
 const transformCity = (city) => {
   return {
     id: city.id,
@@ -56,4 +70,4 @@ const transformCity = (city) => {
   }
 }
 
-export default { transformSimple, transformWeather, transformCity };
+export default { transformSimple, transformWeather, transformForecast, transformCity };

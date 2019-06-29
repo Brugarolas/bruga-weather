@@ -29,6 +29,8 @@
     "react-flip-move": "^3.0.3",
     "@fortawesome/fontawesome-free": "^5.9.0",
     "@andres-brugarolas/swing": "^3.2.0",
+    "sister": "^3.0.2",
+    "classnames": "^2.2.6",
     "unfetch": "^4.1.0",
     "yaku": "^0.19.3"
   },

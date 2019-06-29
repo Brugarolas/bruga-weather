@@ -5,7 +5,8 @@
 .weather {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  flex-direction: column;
   box-sizing: border-box;
   width: 90%;
   max-width: 1200px;
@@ -16,110 +17,120 @@
   padding: 10px 25px;
   box-shadow: 0 1/8rem 1/8rem 0 @color-shadow;
 
+  height: 109px;
+  will-change: height;
+  transition: height 0.5s ease-in-out;
+
   @media @tablet-above {
     padding: 10px 50px;
     width: 80%;
   }
 
-  @media @small-down {
-    flex-direction: column;
-  }
-
-  .column-1 {
-    display: inline-block;
-    text-align: left;
+  .main-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
 
     @media @small-down {
-      text-align: center;
-    }
-  }
-  .column-2 {
-    display: inline-block;
-    flex-grow: 1;
-    text-align: right;
-    margin-right: 19px;
-
-    @media @tablet-above {
-      margin-right: 22px;
+      flex-direction: column;
     }
 
-    @media @small-down {
-      margin-right: 0;
-      margin-top: 8px;
-    }
-  }
-
-  .name {
-    font-size: 18px;
-    font-weight: 400;
-    color: @color-text-light;
-
-    @media @tablet-above {
-      font-size: 20px;
-    }
-  }
-  .flag {
-    display: inline-block;
-    vertical-align: middle;
-    height: 24px;
-    width: 24px;
-
-    @media @tablet-above {
-      height: 32px;
-      width: 32px;
-    }
-  }
-  .desc {
-    font-size: 14px;
-    display: inline-block;
-    color: @color-text-light;
-
-    @media @tablet-above {
-      font-size: 16px;
-    }
-
-    & + .desc {
-      margin-left: 5px;
-
-      &::before {
-        content: ' - ';
-      }
-    }
-  }
-
-  .weather-icon-wrapper {
-    display: inline-block;
-  }
-
-  .temp {
-    position: relative;
-    display: inline-block;
-
-    .units {
+    .column-1 {
       display: inline-block;
-      .fontOpenSans();
-      font-weight: 400;
-      font-size: 48px;
-      width: 70px;
+      text-align: left;
+
+      @media @small-down {
+        text-align: center;
+      }
+    }
+    .column-2 {
+      display: inline-block;
+      flex-grow: 1;
+      text-align: right;
+      margin-right: 19px;
 
       @media @tablet-above {
-        font-size: 64px;
-        width: 94px;
+        margin-right: 22px;
+      }
+
+      @media @small-down {
+        margin-right: 0;
+        margin-top: 8px;
       }
     }
 
-    .metrics {
-      .fontRoboto();
-      width: 17px; // IE11 fix
-      font-size: 16px;
-      font-weight: 300;
-      position: absolute;
-      top: 14px;
+    .name {
+      font-size: 18px;
+      font-weight: 400;
+      color: @color-text-light;
 
       @media @tablet-above {
-        width: 25px; // IE11 fix
-        font-size: 24px;
-        top: 18px;
+        font-size: 20px;
+      }
+    }
+    .flag {
+      display: inline-block;
+      vertical-align: middle;
+      height: 24px;
+      width: 24px;
+
+      @media @tablet-above {
+        height: 32px;
+        width: 32px;
+      }
+    }
+    .desc {
+      font-size: 14px;
+      display: inline-block;
+      color: @color-text-light;
+
+      @media @tablet-above {
+        font-size: 16px;
+      }
+
+      & + .desc {
+        margin-left: 5px;
+
+        &::before {
+          content: ' - ';
+        }
+      }
+    }
+
+    .weather-icon-wrapper {
+      display: inline-block;
+    }
+
+    .temp {
+      position: relative;
+      display: inline-block;
+
+      .units {
+        display: inline-block;
+        .fontOpenSans();
+        font-weight: 400;
+        font-size: 48px;
+        width: 70px;
+
+        @media @tablet-above {
+          font-size: 64px;
+          width: 94px;
+        }
+      }
+
+      .metrics {
+        .fontRoboto();
+        width: 17px; // IE11 fix
+        font-size: 16px;
+        font-weight: 300;
+        position: absolute;
+        top: 14px;
+
+        @media @tablet-above {
+          width: 25px; // IE11 fix
+          font-size: 24px;
+          top: 18px;
+        }
       }
     }
   }
@@ -132,5 +143,28 @@
   }
   &:hover .cancel-button:hover .icon-cancel {
     opacity: 1;
+  }
+
+  .extra-info {
+    /* Test */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 25px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  &__selected {
+    height: 250px;
+
+    .extra-info {
+      opacity: 1;
+    }
   }
 }

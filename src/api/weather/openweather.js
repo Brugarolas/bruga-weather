@@ -20,40 +20,59 @@ const paramsToUrl = (params = {}) => Object.entries(params).map((param) => param
 const paramToUrl = (name, value) => name + (value ? '=' + value : '');
 
 /* API Calls */
-const search = async (url) => {
+const adaptResponse = (json, operation, options) => {
+  if (operation === 'weather') {
+    return Adapt.transformWeather(json);
+  }
+  if (operation === 'group') {
+    return json.list.map(Adapt.transformSimple);
+  }
+  if (operation === 'forecast') {
+    const { sunrise, sunset } = options;
+    const transformForecastFunction = (forecast) => {
+      return Adapt.transformForecast(forecast, sunrise.getTime(), sunset.getTime());
+    };
+
+    return json.list.map(transformForecastFunction);
+  }
+
+  return json;
+};
+
+const search = async (url, operation, extraOptions) => {
   let response = await fetch(url, { cache: 'default', localCache: MINUTES_10_IN_MS });
 
   let json = await response.json();
 
-  return json.list ? json.list.map(Adapt.transformSimple) : Adapt.transformWeather(json);
+  return adaptResponse(json, operation, extraOptions);
 }
 
-const searchCatchErrors = async (url) => {
+const apiRequest = async (operation, params, extra) => {
   try {
-    return await search(url);
+    const url = buildApiUrl(operation, params);
+    return await search(url, operation, extra);
   } catch (error) {
+    console.warn(error);
     return { error: true, msg: error };
   }
-}
+};
 
 /* Public API */
 const searchCityByName = async (city) => {
-  let url = buildApiUrl('weather', { q: city });
-
-  return await searchCatchErrors(url);
+  return await apiRequest('weather', { q: city });
 }
 
 const searchCityById = async (id) => {
-  let url = buildApiUrl('weather', { id });
-
-  return await searchCatchErrors(url);
+  return await apiRequest('weather', { id });
 }
 
 const searchCitiesByIds = async (ids) => {
-  let url = buildApiUrl('group', { id: ids.join(',') });
-
-  return await searchCatchErrors(url);
+  return await apiRequest('group', { id: ids.join(',') });
 }
 
+const forecastCityById = async (id, currentWeather = {}) => {
+  return await apiRequest('forecast', { id }, { sunrise: currentWeather.sunrise, sunset: currentWeather.sunset });
+};
+
 /* Exports */
-export default { searchCityById, searchCitiesByIds, searchCityByName };
+export default { searchCityById, searchCitiesByIds, searchCityByName, forecastCityById };
