@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import WeatherList from '@/ui/components/weather-list.js';
 import ModalContainer from './modal/modal-container.js';
 import Modal from './modal/modal.js';

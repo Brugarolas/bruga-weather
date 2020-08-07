@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Sister from 'sister';
 import OpenWeather from '@/api/weather/openweather.js';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { getLocationById } from '@/store/selectors/index.js';
 import Weather from '@/ui/components/weather.js';
 import Actions from '@/store/actions/index.js';
 import Detect from '@/api/utils/detect.js';
+import { INCLUDE_UNFINISHED_FEATURES } from '@/constants';
 
 const mapStateToProps = (state, props) => ({
   weather: getLocationById(state, props.weatherId)
@@ -54,6 +55,10 @@ class WeatherElement extends Component {
   }
 
   showForecast = () => {
+    if (!INCLUDE_UNFINISHED_FEATURES) {
+      return;
+    }
+
     if (this.state.selected) {
       this.setState({
         selected: false,

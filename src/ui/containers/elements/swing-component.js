@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Swing from '@andres-brugarolas/swing';
+import Swing from '@brugarolas/swing';
 import Detect from '@/api/utils/detect.js';
 
 const config = {
