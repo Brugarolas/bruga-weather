@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import './icon.less';
 
 /** Icon CSS classes: check https://openweathermap.org/weather-conditions */
@@ -15,9 +16,9 @@ var classes = {
   fewclouds: ['few clouds'],
   clouds: ['scattered clouds'],
   darkclouds: ['broken clouds', 'overcast clouds']
-}
+};
 
-const weathers = { }
+const weathers = { };
 
 Object.entries(classes).forEach(([cssClass, weathersDesc]) => {
   weathersDesc.forEach(weather => {
@@ -27,7 +28,7 @@ Object.entries(classes).forEach(([cssClass, weathersDesc]) => {
 
 /** Icon react */
 const Icon = (props) => {
-  let classNames = ['weather-icon', weathers[props.weather], props.daytime ? 'day' : 'night'].join(' ');
+  const classNames = clsx('weather-icon', weathers[props.weather], props.daytime ? 'day' : 'night');
 
   return (
     <i className={classNames} />

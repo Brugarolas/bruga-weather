@@ -1,6 +1,6 @@
 import React from 'react';
 import SwingComponent from '@/ui/containers/elements/swing-component.js';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import Time from '@/ui/containers/elements/time-element.js';
 import Icon from './icon.js';
 import CancelButton from '@/ui/components/cancel-button.js';
@@ -40,10 +40,10 @@ class Weather extends SwingComponent {
 
   render () {
     const { weather, onClose, showCancelButton, selected, forecast } = this.props;
-    const classes = classNames('weather', { 'weather__selected': selected });
+    const classNames = clsx('weather', selected && 'weather__selected');
 
     return (
-      <article className={classes} ref={(weather) => { weather && this.addElement(weather); }} onClick={this.click}>
+      <article className={classNames} ref={(weather) => { weather && this.addElement(weather); }} onClick={this.click}>
         <div className='main-info'>
           <div className="column-1">
             <div className="name">{ weather.city } (<img className="flag" src={weather.flag} />)</div>

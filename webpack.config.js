@@ -1,10 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const RemoteFilePlugin = require('remote-file-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
-const WebappWebpackPlugin = require('webapp-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const DefinePlugin = webpack.DefinePlugin;
 
 module.exports = (env, args) => {
   const isProduction = args.mode === 'production';
@@ -35,17 +34,18 @@ module.exports = (env, args) => {
         },
         {
           test: /\.css$/,
-          use: [ 'css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader' ]
+          use: [ MiniCssExtractPlugin.loader, 'css-loader' ]
         },
         {
           test: /\.less$/,
           use: [
-            { loader: 'css-hot-loader' },
             { loader: MiniCssExtractPlugin.loader },
             { loader: 'css-loader' },
             { loader: 'less-loader',
               options: {
-                paths: [ path.resolve(__dirname, 'node_modules') ]
+                lessOptions: {
+                  paths: [ path.resolve(__dirname, 'node_modules') ]
+                }
               }
             }
           ]
@@ -78,16 +78,9 @@ module.exports = (env, args) => {
       ]
     },
     plugins: [
-      new webpack.DefinePlugin({
+      new DefinePlugin({
         'TIMEZONE_URL': JSON.stringify('https://bruga-time-zone.herokuapp.com/timezone')
       }),
-      new RemoteFilePlugin([
-        {
-          url: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Roboto:100,300,400,500,700,900',
-          filepath: 'styles/fonts.css',
-          cache: true
-        },
-      ]),
       new MiniCssExtractPlugin({
         filename: "styles/bundle.css?[hash]"
       }),
@@ -100,33 +93,7 @@ module.exports = (env, args) => {
         },
         inject: true
       }),
-      new WebappWebpackPlugin({
-        logo: './src/assets/logo.png',
-        cache: true,
-        prefix: 'icons/',
-        inject: true,
-        favicons: {
-          appName: 'Bruga Weather',
-          appDescription: 'Simple weather app made with <3 by Andrés Brugarolas',
-          icons: {
-            android: true,
-            appleIcon: true,
-            appleStartup: true,
-            coast: false,
-            favicons: true,
-            firefox: false,
-            windows: false,
-            yandex: false
-          }
-        }
-      }),
-      new HtmlWebpackIncludeAssetsPlugin({
-        assets: ['styles/fonts.css'],
-        resolvePaths: true,
-        publicPath: true,
-        append: true,
-        hash: true
-      })
+      new FaviconsWebpackPlugin('./src/assets/logo.png')
     ],
     resolve: {
       alias: {
