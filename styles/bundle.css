@@ -1,72 +1,5 @@
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r8OUuhs.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNirkOUuhs.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOUuhs.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 800;
-  src: local('Open Sans ExtraBold'), local('OpenSans-ExtraBold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN8rsOUuhs.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 100;
-  src: local('Roboto Thin'), local('Roboto-Thin'), url(https://fonts.gstatic.com/s/roboto/v20/KFOkCnqEu92Fr1MmgVxIIzc.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc9.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc9.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 900;
-  src: local('Roboto Black'), local('Roboto-Black'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmYUtfBBc9.ttf) format('truetype');
-}
-
 /*!
- * Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 .fa,
@@ -268,6 +201,9 @@
 }
 .fa-adn:before {
   content: "\f170";
+}
+.fa-adobe:before {
+  content: "\f778";
 }
 .fa-adversal:before {
   content: "\f36a";
@@ -1057,9 +993,6 @@
 }
 .fa-cloud-upload-alt:before {
   content: "\f382";
-}
-.fa-cloudflare:before {
-  content: "\e07d";
 }
 .fa-cloudscale:before {
   content: "\f383";
@@ -2054,9 +1987,6 @@
 .fa-grunt:before {
   content: "\f3ad";
 }
-.fa-guilded:before {
-  content: "\e07e";
-}
 .fa-guitar:before {
   content: "\f7a6";
 }
@@ -2231,9 +2161,6 @@
 .fa-history:before {
   content: "\f1da";
 }
-.fa-hive:before {
-  content: "\e07f";
-}
 .fa-hockey-puck:before {
   content: "\f453";
 }
@@ -2363,17 +2290,11 @@
 .fa-info-circle:before {
   content: "\f05a";
 }
-.fa-innosoft:before {
-  content: "\e080";
-}
 .fa-instagram:before {
   content: "\f16d";
 }
 .fa-instagram-square:before {
   content: "\e055";
-}
-.fa-instalod:before {
-  content: "\e081";
 }
 .fa-intercom:before {
   content: "\f7af";
@@ -2894,9 +2815,6 @@
 .fa-object-ungroup:before {
   content: "\f248";
 }
-.fa-octopus-deploy:before {
-  content: "\e082";
-}
 .fa-odnoklassniki:before {
   content: "\f263";
 }
@@ -3034,9 +2952,6 @@
 }
 .fa-pepper-hot:before {
   content: "\f816";
-}
-.fa-perbyte:before {
-  content: "\e083";
 }
 .fa-percent:before {
   content: "\f295";
@@ -4208,9 +4123,6 @@
 .fa-umbrella-beach:before {
   content: "\f5ca";
 }
-.fa-uncharted:before {
-  content: "\e084";
-}
 .fa-underline:before {
   content: "\f0cd";
 }
@@ -4364,12 +4276,6 @@
 .fa-venus-mars:before {
   content: "\f228";
 }
-.fa-vest:before {
-  content: "\e085";
-}
-.fa-vest-patches:before {
-  content: "\e086";
-}
 .fa-viacoin:before {
   content: "\f237";
 }
@@ -4460,9 +4366,6 @@
 .fa-warehouse:before {
   content: "\f494";
 }
-.fa-watchman-monitoring:before {
-  content: "\e087";
-}
 .fa-water:before {
   content: "\f773";
 }
@@ -4537,9 +4440,6 @@
 }
 .fa-wizards-of-the-coast:before {
   content: "\f730";
-}
-.fa-wodu:before {
-  content: "\e088";
 }
 .fa-wolf-pack-battalion:before {
   content: "\f514";
@@ -4639,7 +4539,7 @@
   width: auto;
 }
 /*!
- * Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 @font-face {
@@ -4647,8 +4547,8 @@
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url(/bruga-weather/fonts/fa-solid-900.eot?3a24a60e7f9c6574864a38814fa07533);
-  src: url(/bruga-weather/fonts/fa-solid-900.eot?3a24a60e7f9c6574864a38814fa07533?#iefix) format('embedded-opentype'), url(/bruga-weather/fonts/fa-solid-900.woff2?3ceb50e7bcafb577367c21b53064e00c) format('woff2'), url(/bruga-weather/fonts/fa-solid-900.woff?46fdbd2d897f8824e63c8862af60b24c) format('woff'), url(/bruga-weather/fonts/fa-solid-900.ttf?10ecefc282f2761808bf26cb335511d5) format('truetype'), url(/bruga-weather/fonts/fa-solid-900.svg?371dbce0dd46bd4d2033eb2334f28580#fontawesome) format('svg');
+  src: url(/bruga-weather/fonts/fa-solid-900.eot?89bd2e38475e441a5cd70f663f921d61);
+  src: url(/bruga-weather/fonts/fa-solid-900.eot?89bd2e38475e441a5cd70f663f921d61?#iefix) format('embedded-opentype'), url(/bruga-weather/fonts/fa-solid-900.woff2?c500da19d776384ba69573ae6fe274e7) format('woff2'), url(/bruga-weather/fonts/fa-solid-900.woff?ee09ad7553b8ad3d81150d609d5341a0) format('woff'), url(/bruga-weather/fonts/fa-solid-900.ttf?781e85bb50c8e8301c30de56b31b1f04) format('truetype'), url(/bruga-weather/fonts/fa-solid-900.svg?03ba7cb710104df27f1c9c46d64bee4e#fontawesome) format('svg');
 }
 .fa,
 .fas {
@@ -4765,7 +4665,7 @@ body {
   background-origin: padding-box;
   background-clip: border-box;
   background-size: contain;
-  background-image: url(/bruga-weather/img/cloudy-day-1.svg?213f9a41fb1665620980c45180b0cac7);
+  background-image: url(/bruga-weather/img/cloudy-day-1.svg?80a5d865c63ba642a927daba54438305);
   margin: -20px;
   margin-top: -26px;
 }
@@ -4778,61 +4678,61 @@ body {
   }
 }
 .weather-icon.thunderstorm {
-  background-image: url(/bruga-weather/img/thunder.svg?19ff3c30164844769f3ce4b84c5b180f);
+  background-image: url(/bruga-weather/img/thunder.svg?7142c78bba5ddb0b77c3ccddcebe96ab);
 }
 .weather-icon.lightrain.day {
-  background-image: url(/bruga-weather/img/rainy-2.svg?523a54b86f32a04f4415670caddd3b50);
+  background-image: url(/bruga-weather/img/rainy-2.svg?35eb268dd7e8dfe694b55fec314a0b10);
 }
 .weather-icon.lightrain.night {
-  background-image: url(/bruga-weather/img/rainy-4.svg?9988edfd7ac66c28e664807a62b56eed);
+  background-image: url(/bruga-weather/img/rainy-4.svg?c8cdb21695a664b4dbffeb1fc9631510);
 }
 .weather-icon.rain.day {
-  background-image: url(/bruga-weather/img/rainy-3.svg?8c33eccc717e097dc00afa8bef3648f5);
+  background-image: url(/bruga-weather/img/rainy-3.svg?c17e7a5d3d1b7d702bc8c640a36f68c6);
 }
 .weather-icon.rain.night {
-  background-image: url(/bruga-weather/img/rainy-5.svg?a8183a992545bbb02f27601f7b4f4412);
+  background-image: url(/bruga-weather/img/rainy-5.svg?2bd236411dc612e871d9c314239c3fa7);
 }
 .weather-icon.heavyrain {
-  background-image: url(/bruga-weather/img/rainy-6.svg?130d6250fca4e54ff49f051788a840ef);
+  background-image: url(/bruga-weather/img/rainy-6.svg?d235ab65ea35c3fcade47b8f5c6c4ae7);
 }
 .weather-icon.hail {
-  background-image: url(/bruga-weather/img/rainy-7.svg?9305701c616e797ab47381ee79c337a7);
+  background-image: url(/bruga-weather/img/rainy-7.svg?c915395f8c3e3571d734680505ceeb11);
 }
 .weather-icon.lightsnow.day {
-  background-image: url(/bruga-weather/img/snowy-2.svg?3be1e2a1569fa9b0bbc603855b93b083);
+  background-image: url(/bruga-weather/img/snowy-2.svg?d103c77cf7f40bc52812fe945ddd3cfa);
 }
 .weather-icon.lightsnow.night {
-  background-image: url(/bruga-weather/img/snowy-4.svg?37766ef22ceaca76db6b79f8d2ed6bba);
+  background-image: url(/bruga-weather/img/snowy-4.svg?474b6da7e78dc3dadc11766d80f7eaca);
 }
 .weather-icon.snow.day {
-  background-image: url(/bruga-weather/img/snowy-3.svg?b5422f54f9f554eb98f859897f3e08cc);
+  background-image: url(/bruga-weather/img/snowy-3.svg?b6eea2cf5e8a5ab5f57405addab863ae);
 }
 .weather-icon.snow.night {
-  background-image: url(/bruga-weather/img/snowy-5.svg?c90a1604f5f5f5bea2edcac4ba61d8a4);
+  background-image: url(/bruga-weather/img/snowy-5.svg?3def7c9fb95731ac622871fb6925d5f6);
 }
 .weather-icon.heavysnow {
-  background-image: url(/bruga-weather/img/snowy-6.svg?dce3f5e7e7d2c7e342ff5e169eee4fc4);
+  background-image: url(/bruga-weather/img/snowy-6.svg?67d63a14dbbef1d431f1851da197e0ae);
 }
 .weather-icon.clear.day {
-  background-image: url(/bruga-weather/img/day.svg?c33ef66438b2725bead593a7abbe18bc);
+  background-image: url(/bruga-weather/img/day.svg?7f93fbdb8a9d02fe414c0a0119b77bd4);
 }
 .weather-icon.clear.night {
-  background-image: url(/bruga-weather/img/night.svg?6cf4adcd3e5042b690483bd65694aaa6);
+  background-image: url(/bruga-weather/img/night.svg?a3f3f38d2c17971938ebd891fb6bbd0c);
 }
 .weather-icon.fewclouds.day {
-  background-image: url(/bruga-weather/img/cloudy-day-1.svg?213f9a41fb1665620980c45180b0cac7);
+  background-image: url(/bruga-weather/img/cloudy-day-1.svg?80a5d865c63ba642a927daba54438305);
 }
 .weather-icon.fewclouds.night {
-  background-image: url(/bruga-weather/img/cloudy-night-1.svg?4e6a9fdeed0f295b3dfb74fbae5a3d1c);
+  background-image: url(/bruga-weather/img/cloudy-night-1.svg?7e65840bf2249d8f7ba19fc029438545);
 }
 .weather-icon.clouds.day {
-  background-image: url(/bruga-weather/img/cloudy-day-3.svg?2164d3c4f5b55bd11f0302d3ffc55e32);
+  background-image: url(/bruga-weather/img/cloudy-day-3.svg?109368f632c5dafab6cbf47ec386f8d0);
 }
 .weather-icon.clouds.night {
-  background-image: url(/bruga-weather/img/cloudy-night-3.svg?e2327d5071146989f596c4d01b269f60);
+  background-image: url(/bruga-weather/img/cloudy-night-3.svg?bf91ac0f97cf729862dfaeb8fc25e037);
 }
 .weather-icon.darkclouds {
-  background-image: url(/bruga-weather/img/cloudy.svg?24f9a4741fe33f66bc0d9fc06706aac7);
+  background-image: url(/bruga-weather/img/cloudy.svg?ad789581dd3bfe802dd2e6ea0c2f5caa);
 }
 
 .cancel-button {
