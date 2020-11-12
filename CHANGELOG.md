@@ -1,3 +1,6 @@
+## v1.6.0
+Upgrade to Webpack 5
+
 ## v1.5.0
 Page Visibility events for updating
 Some fixes on updating & searching
