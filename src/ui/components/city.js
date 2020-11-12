@@ -5,7 +5,7 @@ const once = (func) => {
   var times = 0;
   return () => {
     if (++times === 1) {
-      return func.apply(this, arguments);
+      return func();
     }
   };
 }

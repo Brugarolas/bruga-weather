@@ -6,15 +6,18 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const DefinePlugin = webpack.DefinePlugin;
 
 module.exports = (env, args) => {
+  const isLocal = env && env.NODE_ENV === 'local';
   const isProduction = args.mode === 'production';
-
-  const isAnalyzer = isProduction && args.analyzer;
-
-  const publicPath = isProduction ? '/' + (args.publicPath ? args.publicPath + '/' : '') : '/';
+  const isAnalyzer = isProduction && args.analyze;
+  const publicPath = isProduction ? '/' + (env && env.PUBLIC_PATH ? env.PUBLIC_PATH + '/' : '') : '/';
 
   const config = {
     entry: './src/index.js',
-    stats: { children: false },
+    stats: {
+      assets: true,
+      children: false,
+      colors: true
+    },
     module: {
       rules: [
         {
@@ -55,7 +58,7 @@ module.exports = (env, args) => {
           exclude: /(fa-.+\.svg)$/, /* Font Awesome */
           loader: 'file-loader',
           options: {
-            name: '[name].[ext]?[hash]',
+            name: '[name].[ext]?[contenthash]',
             outputPath: 'img'
           }
         },
@@ -63,7 +66,7 @@ module.exports = (env, args) => {
           test: [ /\.(woff|woff2|ttf|eot)$/, /(fa-.+\.svg)$/ ],
           loader: 'file-loader',
           options: {
-            name: '[name].[ext]?[hash]',
+            name: '[name].[ext]?[contenthash]',
             outputPath: 'fonts'
           }
         },
@@ -79,10 +82,11 @@ module.exports = (env, args) => {
     },
     plugins: [
       new DefinePlugin({
-        'TIMEZONE_URL': JSON.stringify('https://bruga-time-zone.herokuapp.com/timezone')
+        TIMEZONE_URL: JSON.stringify('https://bruga-time-zone.herokuapp.com/timezone'),
+        PUBLIC_PATH: publicPath
       }),
       new MiniCssExtractPlugin({
-        filename: "styles/bundle.css?[hash]"
+        filename: "styles/bundle.css?[contenthash]"
       }),
       new HtmlWebPackPlugin({
         template: './src/index.html',
@@ -104,17 +108,32 @@ module.exports = (env, args) => {
     output: {
       path: __dirname + '/dist',
       publicPath: publicPath,
-      filename: 'js/bundle.js?[hash]'
+      filename: 'js/bundle.js?[contenthash]'
+    },
+    optimization: {
+      minimize: true
     },
     devServer: {
-      contentBase: './dist'
+      contentBase: path.join(__dirname, 'dist'),
+      compress: true,
+      port: 8080,
+      hot: true,
+      open: true,
+      host: isLocal ? '0.0.0.0' : 'localhost',
+      useLocalIp: isLocal
     }
   };
+
+  if (!isProduction) {
+    module.exports.devtool = 'eval-source-map';
+  }
 
   if (isProduction) {
     // Add babel-minify preset only in production
     const babelRules = config.module.rules.find(rule => rule.loader === 'babel-loader');
     babelRules.options.presets.unshift(['minify', { builtIns: true } ]);
+
+    module.exports.mode = 'production';
   }
 
   if (isAnalyzer) {
