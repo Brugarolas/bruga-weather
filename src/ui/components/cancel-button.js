@@ -9,7 +9,7 @@ const CancelButton = (props) => {
   }
 
   return (
-    <button onClick={click} className='cancel-button'><i className='fas fa-times icon-cancel'></i></button>
+    <button onClick={click} className='cancel-button'><i className='b-icon b-icon-times-solid icon-cancel'></i></button>
   )
 }
 

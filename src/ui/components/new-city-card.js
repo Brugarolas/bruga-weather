@@ -7,7 +7,7 @@ const NewCityCard = (props) => {
     <article className="new-city-card" onClick={props.onClick} >
       <div className="container icons">
         <img className="icon-rain" src={rainy6} />
-        <i className="fas fa-city icon-city"></i>
+        <i className="b-icon b-icon-city-solid icon-city"></i>
       </div>
       <div className="container">
         <h4 className="title">New Location</h4>

@@ -25,9 +25,9 @@ class SearchCityForm extends Component {
   iconClassName = () => {
     const { isSearching, hasError } = this.props;
 
-    if (isSearching) return "fas fa-spinner fa-spin icon";
-    if (hasError) return "fas fa-times icon";
-    return "fas fa-search icon";
+    if (isSearching) return "b-icon b-icon-spinner-third-solid b-spin icon";
+    if (hasError) return "b-icon b-icon-fimes-solid icon";
+    return "b-icon b-icon-search-solid icon";
   }
 
   render () {

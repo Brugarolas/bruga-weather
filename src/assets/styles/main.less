@@ -1,8 +1,16 @@
 @import (once, inline) "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Roboto:100,300,400,500,700,900";
-@import (less) "@fortawesome/fontawesome-free/less/fontawesome.less";
-@import (less) "@fortawesome/fontawesome-free/less/solid.less";
 @import (less, reference) "./mixins.less";
 @import (less, reference) "./colors.less";
+
+@keyframes spinnerAc {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
 
 html {
   background-color: @color-background;
@@ -14,4 +22,8 @@ body {
   padding: 0;
   margin: 0;
   color: @color-header;
+}
+
+.b-spin {
+  animation: spinnerAc 2s linear infinite;
 }

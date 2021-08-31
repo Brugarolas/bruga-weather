@@ -13,10 +13,24 @@ module.exports = (env, args) => {
 
   const config = {
     entry: './src/index.js',
+    mode: 'development',
     stats: {
       assets: true,
       children: false,
       colors: true
+    },
+    output: {
+      path: path.resolve(__dirname, './dist'),
+      publicPath: publicPath,
+      filename: 'js/bundle.js?[contenthash]'
+    },
+    optimization: {
+      minimize: true,
+      removeEmptyChunks: true,
+      mergeDuplicateChunks: true,
+      flagIncludedChunks: true, // https://webpack.js.org/configuration/optimization/#optimizationflagincludedchunks
+      providedExports: true,
+      usedExports: 'global'
     },
     module: {
       rules: [
@@ -31,7 +45,7 @@ module.exports = (env, args) => {
             ],
             plugins: [
               [ '@babel/transform-runtime', { corejs: 3 } ],
-              [ '@babel/plugin-proposal-class-properties', { loose: true }]
+              [ '@babel/plugin-proposal-class-properties']
             ]
           }
         },
@@ -49,6 +63,24 @@ module.exports = (env, args) => {
                 lessOptions: {
                   paths: [ path.resolve(__dirname, 'node_modules') ]
                 }
+              }
+            }
+          ]
+        },
+        {
+          test: /-font\.js/,
+          use: [
+            { loader: MiniCssExtractPlugin.loader },
+            {
+              loader: 'css-loader',
+              options: {
+                url: false
+              }
+            },
+            {
+              loader: 'webfonts-loader',
+              options: {
+                publicPath: publicPath
               }
             }
           ]
@@ -105,23 +137,20 @@ module.exports = (env, args) => {
       },
       extensions: ['*', '.js', '.jsx', '.json']
     },
-    output: {
-      path: __dirname + '/dist',
-      publicPath: publicPath,
-      filename: 'js/bundle.js?[contenthash]'
-    },
-    optimization: {
-      minimize: true
-    },
     devServer: {
-      contentBase: path.join(__dirname, 'dist'),
+      static: {
+        directory: path.join(__dirname, 'dist')
+      },
       compress: true,
       port: 8080,
       hot: true,
       open: true,
-      host: isLocal ? '0.0.0.0' : 'localhost',
-      useLocalIp: isLocal
-    }
+      allowedHosts: 'all' // for ngrok
+    },
+    performance: {
+      hints: false
+    },
+    devtool: 'eval-source-map'
   };
 
   if (!isProduction) {
