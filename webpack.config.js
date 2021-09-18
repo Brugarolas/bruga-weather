@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const DefinePlugin = webpack.DefinePlugin;
 
 module.exports = (env, args) => {
-  const isLocal = env && env.NODE_ENV === 'local';
   const isProduction = args.mode === 'production';
   const isAnalyzer = isProduction && args.analyze;
   const publicPath = isProduction ? '/' + (env && env.PUBLIC_PATH ? env.PUBLIC_PATH + '/' : '') : '/';
@@ -61,8 +60,7 @@ module.exports = (env, args) => {
             { loader: 'less-loader',
               options: {
                 lessOptions: {
-                  paths: [ path.resolve(__dirname, 'node_modules') ],
-                  relativeUrls: true
+                  paths: [ path.resolve(__dirname, 'node_modules') ]
                 }
               }
             }
@@ -81,7 +79,7 @@ module.exports = (env, args) => {
             {
               loader: 'webfonts-loader',
               options: {
-                publicPath: publicPath
+                publicPath: '/bruga-weather/'
               }
             }
           ]
@@ -107,7 +105,7 @@ module.exports = (env, args) => {
           test: /\.html$/,
           use: [
             {
-              loader: "html-loader"
+              loader: 'html-loader'
             }
           ]
         }
@@ -119,7 +117,7 @@ module.exports = (env, args) => {
         PUBLIC_PATH: publicPath
       }),
       new MiniCssExtractPlugin({
-        filename: "styles/bundle.css?[contenthash]"
+        filename: 'styles/bundle.css?[contenthash]'
       }),
       new HtmlWebPackPlugin({
         template: './src/index.html',
@@ -158,6 +156,8 @@ module.exports = (env, args) => {
   if (isProduction) {
     config.mode = 'production';
     config.devtool = false;
+
+    console.log('publicPath', publicPath)
 
     // Add babel-minify preset only in production
     const babelRules = config.module.rules.find(rule => rule.loader === 'babel-loader');
