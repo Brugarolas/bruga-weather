@@ -1,9 +1,10 @@
 import React from 'react';
 import clsx from 'clsx';
+import Icons from '@/constants/icons.js';
 import './icon.less';
 
 /** Icon CSS classes: check https://openweathermap.org/weather-conditions */
-var classes = {
+const classes = {
   thunderstorm: ['thunderstorm with light rain', 'thunderstorm with rain', 'thunderstorm with heavy rain', 'light thunderstorm', 'thunderstorm', 'heavy thunderstorm', 'ragged thunderstorm', 'ragged thunderstorm', 'thunderstorm with light drizzle', 'thunderstorm with drizzle', 'thunderstorm with heavy drizzle'],
   lightrain: ['light intensity drizzle', 'drizzle', 'light intensity drizzle rain', 'light rain'],
   rain: ['heavy intensity drizzle', 'drizzle rain', 'shower drizzle', 'moderate rain', 'light intensity shower rain'],
@@ -18,6 +19,52 @@ var classes = {
   darkclouds: ['broken clouds', 'overcast clouds']
 };
 
+const icons = {
+  thunderstorm: {
+    default: Icons.thunder
+  },
+  lightrain: {
+    day: Icons.rainy2,
+    night: Icons.rainy4
+  },
+  rain: {
+    day: Icons.rainy3,
+    night: Icons.rainy5
+  },
+  heavyrain: {
+    default: Icons.rainy6
+  },
+  hail: {
+    default: Icons.rainy7
+  },
+  lightsnow: {
+    day: Icons.snowy2,
+    night: Icons.snowy4
+  },
+  snow: {
+    day: Icons.snowy3,
+    night: Icons.snowy5
+  },
+  heavysnow: {
+    default: Icons.snowy6
+  },
+  clear: {
+    day: Icons.day,
+    night: Icons.night
+  },
+  fewclouds: {
+    day: Icons.cloudyDay1,
+    night: Icons.cloudyNight1
+  },
+  clouds: {
+    day: Icons.cloudyDay3,
+    night: Icons.cloudyNight3
+  },
+  darkclouds: {
+    default: Icons.cloudy
+  }
+}
+
 const weathers = { };
 
 Object.entries(classes).forEach(([cssClass, weathersDesc]) => {
@@ -28,10 +75,14 @@ Object.entries(classes).forEach(([cssClass, weathersDesc]) => {
 
 /** Icon react */
 const Icon = (props) => {
-  const classNames = clsx('weather-icon', weathers[props.weather], props.daytime ? 'day' : 'night');
+  const weather = weathers[props.weather]
+  const daytime = props.daytime ? 'day' : 'night'
+
+  const classNames = clsx('weather-icon', weather, daytime);
+  const icon = icons[weather][daytime] || icons[weather].default
 
   return (
-    <i className={classNames} />
+    <img className={classNames} src={icon} />
   )
 }
 

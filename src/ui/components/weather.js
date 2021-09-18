@@ -52,9 +52,7 @@ class Weather extends SwingComponent {
           </div>
 
           <div className="column-2">
-            <div className="weather-icon-wrapper">
-              <Icon daytime={weather.daytime} weather={weather.descr} />
-            </div>
+            <Icon daytime={weather.daytime} weather={weather.descr} />
 
             <div className="temp">
               <span className="units">{ weather.temp}</span>

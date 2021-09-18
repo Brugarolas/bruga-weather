@@ -1,106 +1,11 @@
-@import (less, reference) "../../assets/styles/icons.less";
 @import (less, reference) '../../assets/styles/breakpoints.less';
 
 .weather-icon {
   width: 80px;
   height: 80px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-origin: padding-box;
-  background-clip: border-box;
-  background-size: contain;
-  background-image: @cloudyDay1;
-  margin: -20px;
-  margin-top: -26px;
 
   @media @tablet-above {
     width: 100px;
     height: 100px;
-    margin: -24px;
-    margin-top: -30px;
-  }
-
-  &.thunderstorm {
-    background-image: @thunder;
-  }
-
-  &.lightrain {
-    &.day {
-      background-image: @rainy2;
-    }
-    &.night {
-      background-image: @rainy4;
-    }
-  }
-
-  &.rain {
-    &.day {
-      background-image: @rainy3;
-    }
-    &.night {
-      background-image: @rainy5;
-    }
-  }
-
-  &.heavyrain {
-    background-image: @rainy6;
-  }
-
-  &.hail {
-    background-image: @rainy7;
-  }
-
-  &.lightsnow {
-    &.day {
-      background-image: @snowy2;
-    }
-    &.night {
-      background-image: @snowy4;
-    }
-  }
-
-  &.snow {
-    &.day {
-      background-image: @snowy3;
-    }
-    &.night {
-      background-image: @snowy5;
-    }
-  }
-
-  &.heavysnow {
-    background-image: @snowy6;
-  }
-
-  &.clear {
-    &.day {
-      background-image: @day;
-    }
-    &.night {
-      background-image: @night;
-    }
-  }
-
-  &.fewclouds {
-    &.day {
-      background-image: @cloudyDay1;
-    }
-    &.night {
-      background-image: @cloudyNight1;
-    }
-  }
-
-  &.clouds {
-    &.day {
-      background-image: @cloudyDay3;
-    }
-    &.night {
-      background-image: @cloudyNight3;
-    }
-  }
-
-  &.darkclouds {
-    background-image: @cloudy;
   }
 }
