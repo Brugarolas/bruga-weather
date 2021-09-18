@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+// const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const DefinePlugin = webpack.DefinePlugin;
 
 module.exports = (env, args) => {
@@ -124,13 +124,14 @@ module.exports = (env, args) => {
       new HtmlWebPackPlugin({
         template: './src/index.html',
         filename: './index.html',
+        favicon: './src/assets/logo.png', // Delete when Favicon plugin is supported again
         meta: {
           viewport: 'user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no',
           description: 'Simple weather app made with <3 by Andrés Brugarolas'
         },
         inject: true
-      }),
-      new FaviconsWebpackPlugin('./src/assets/logo.png')
+      })
+      // new FaviconsWebpackPlugin('./src/assets/logo.png') // Webpack 5 still not supported
     ],
     resolve: {
       alias: {
@@ -154,16 +155,13 @@ module.exports = (env, args) => {
     devtool: 'eval-source-map'
   };
 
-  if (!isProduction) {
-    module.exports.devtool = 'eval-source-map';
-  }
-
   if (isProduction) {
+    config.mode = 'production';
+    config.devtool = false;
+
     // Add babel-minify preset only in production
     const babelRules = config.module.rules.find(rule => rule.loader === 'babel-loader');
     babelRules.options.presets.unshift(['minify', { builtIns: true } ]);
-
-    module.exports.mode = 'production';
   }
 
   if (isAnalyzer) {
