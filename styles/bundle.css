@@ -1,9 +1,9 @@
 @font-face {
-	font-family: "bruga-music-fonts";
-	src: url("/fonts/bruga-music-fonts.woff2?f1bd574a092cde606097") format("woff2"),
-url("/fonts/bruga-music-fonts.woff?f1bd574a092cde606097") format("woff"),
-url("/fonts/bruga-music-fonts.ttf?f1bd574a092cde606097") format("truetype"),
-url("/fonts/bruga-music-fonts.svg?f1bd574a092cde606097#bruga-music-fonts") format("svg");
+	font-family: "bruga-weather-fonts";
+	src: url("/bruga-weather/fonts/bruga-weather-fonts.woff2?f1bd574a092cde606097") format("woff2"),
+url("/bruga-weather/fonts/bruga-weather-fonts.woff?f1bd574a092cde606097") format("woff"),
+url("/bruga-weather/fonts/bruga-weather-fonts.ttf?f1bd574a092cde606097") format("truetype"),
+url("/bruga-weather/fonts/bruga-weather-fonts.svg?f1bd574a092cde606097#bruga-weather-fonts") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -11,7 +11,7 @@ url("/fonts/bruga-music-fonts.svg?f1bd574a092cde606097#bruga-music-fonts") forma
 
 .b-icon {
   display: inline-block;
-  font-family: bruga-music-fonts !important;
+  font-family: bruga-weather-fonts !important;
   speak: never;
 	font-style: normal;
 	font-weight: normal !important;
