@@ -1,3 +1,5 @@
+import fetch from '@/api/utils/fetch-cache.js';
+
 const round = (number) => {
   return Math.round(number);
 }
@@ -14,8 +16,24 @@ const kelvinToCelsius = (k) => {
   return Math.round((k - 273.15));
 }
 
-const flag = (country, style = 'shiny', size = 24) => { // styles flat and shiny, sizez 64 48 32 24 16
-  return `https://www.countryflags.io/${country}/${style}/${size}.png`; // https://countryflags.io/
+const flagUrl = (country) => {
+  return `https://countryflagsapi.com/png/${country.toLowerCase()}`;
+}
+
+const flagImage = async (country) => {
+  const url = flagUrl(country);
+  const response = await fetch(url, { cache: 'default', localCache: true, useBlob: true });
+  const blob = await response.blob();
+
+  return new Promise((onSuccess, onError) => {
+    try {
+      const reader = new FileReader();
+      reader.onload = function () { onSuccess(this.result) };
+      reader.readAsDataURL(blob);
+    } catch (error) {
+      onError(erro);
+    }
+  });
 }
 
 const transformSimple = (weather) => {
@@ -23,7 +41,7 @@ const transformSimple = (weather) => {
     id: weather.id,
     city: weather.name,
     country: weather.sys.country,
-    flag: flag(weather.sys.country, 'shiny', 32),
+    flag: flagImage(weather.sys.country),
     temp: round(weather.main.temp),
     main: weather.weather[0].main,
     descr: weather.weather[0].description,
@@ -32,7 +50,11 @@ const transformSimple = (weather) => {
     wind_speed: roundTo2(weather.wind.speed * (3600 / 1000)), //'km/h'
     time: new Date(weather.dt * 1000),
     daytime: weather.dt > weather.sys.sunrise && weather.dt < weather.sys.sunset,
-    location: weather.coord
+    location: weather.coord,
+    promises: async function () {
+      const flagImage = await this.flag
+      this.flag = flagImage
+    }
   }
 }
 
@@ -59,15 +81,22 @@ const transformForecast = (forecast, sunrise, sunset) => {
 }
 
 const transformCity = (city) => {
-  return {
+  const adapted = {
     id: city.id,
     name: city.name,
     country: city.sys.country,
-    flag: flag(city.sys.country, 'shiny', 32),
+    flag: flagImage(city.sys.country),
     temp: kelvinToCelsius(city.main.temp),
     main: city.weather[0].main,
-    descr: city.weather[0].description
+    descr: city.weather[0].description,
+    promises: async function () {
+      const flagImage = await this.flag
+      this.flag = flagImage
+    }
   }
+
+  return adapted
+
 }
 
 export default { transformSimple, transformWeather, transformForecast, transformCity };

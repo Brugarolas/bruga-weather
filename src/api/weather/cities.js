@@ -1,6 +1,6 @@
 import Adapt from './adapt.js';
 import ArrayUtils from '@/api/utils/array.js';
-import fetch from '@/api/utils/fetch-cache.js';
+import fetch from '@/api/utils/fetch-cache.js';;
 
 const API_URL = 'https://openweathermap.org/data/2.5/find';
 
@@ -27,11 +27,21 @@ const paramToUrl = (name, value) => name + (value ? '=' + value : '');
 
 /* API Calls */
 const search = async (url) => {
-  let response = await fetch(url, { cache: 'default', localCache: true });
+  const response = await fetch(url, { cache: 'default', localCache: true });
 
-  let json = await response.json();
+  const json = await response.json();
 
-  return ArrayUtils.removeDuplicatesById(json.list).map(Adapt.transformCity);
+  try {
+    const adaptedCities = ArrayUtils.removeDuplicatesById(json.list).map(Adapt.transformCity);
+
+    const promises = adaptedCities.map(adaptedCity => adaptedCity.promises());
+    await Promise.all(promises);
+
+    return adaptedCities;
+  } catch (error) {
+    console.warn('ERROR', error)
+    return {}
+  }
 }
 
 const searchCatchErrors = async (url) => {
@@ -44,7 +54,7 @@ const searchCatchErrors = async (url) => {
 
 /* Public API */
 const searchCity = async (city) => {
-  let url = buildApiUrl({ q: city });
+  const url = buildApiUrl({ q: city });
 
   return await searchCatchErrors(url);
 }

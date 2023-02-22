@@ -114,22 +114,24 @@ const cacheIsValid = (cache, options) => {
   return now - cache.time <= options.localCache;
 };
 
-const cacheResponse = (json) => {
-  return { json: () => json }
+const cacheResponse = (data) => {
+  return { json: () => data, blob: () => data }
 };
 
 /* Main fetch functions */
 const tryFech = async (url, options) => {
   try {
     const response = await fetch(url, options);
-    const json = await response.json();
 
     // If response is not ok (HTTP status 2xx) - better to throw an error
     if (!response.ok) {
-      throw new Error(`Error ${response.status} ${response.statusText}: ${json.name} - ${json.message}`);
+      const msg = `Error ${response.status} ${response.statusText}` + options.useBlob ? '' : `: ${data.name} - ${data.message}`
+      throw new Error(msg);
     }
 
-    return { json, success: true };
+    const data = await (options.useBlob ? response.blob() : response.json());
+
+    return { data, success: true };
   } catch (error) {
     return { error, success: false };
   }
@@ -165,11 +167,11 @@ const fetchCache = async (url, options) => {
 
     // Save URL (key) and response in cache database
     setTimeout(async () => {
-      database.write({ url, response: response.json, time: Date.now() }, true);
+      database.write({ url, response: response.data, time: Date.now() }, true);
     }, safeTimeout);
 
     // Return an object with fetch() function to emulate native fetch default response
-    return cacheResponse(response.json);
+    return cacheResponse(response.data);
   }
 }
 

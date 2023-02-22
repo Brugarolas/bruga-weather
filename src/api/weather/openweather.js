@@ -40,11 +40,16 @@ const adaptResponse = (json, operation, options) => {
 };
 
 const search = async (url, operation, extraOptions) => {
-  let response = await fetch(url, { cache: 'default', localCache: MINUTES_10_IN_MS });
+  const response = await fetch(url, { cache: 'default', localCache: MINUTES_10_IN_MS });
 
-  let json = await response.json();
+  const json = await response.json();
 
-  return adaptResponse(json, operation, extraOptions);
+  const adaptedResponse = adaptResponse(json, operation, extraOptions);
+
+  const flagPromise = operation === 'weather' ? adaptedResponse.promises() : Promise.all(adaptedResponse.map(adaptedCity => adaptedCity.promises()));
+  await flagPromise;
+
+  return adaptedResponse;
 }
 
 const apiRequest = async (operation, params, extra) => {
