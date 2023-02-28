@@ -1,5 +1,5 @@
 import Detect from './detect.js';
-import PageVisibility from './pageVisibility.js';
+import PageVisibility from './page-visibility.js';
 
 /* Interval & Idle callback shim */
 function startIdleInterval(task) {
