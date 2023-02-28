@@ -113,7 +113,7 @@ module.exports = (env, args) => {
     },
     plugins: [
       new DefinePlugin({
-        TIMEZONE_URL: JSON.stringify('https://bruga-time-zone.herokuapp.com/timezone'),
+        TIMEZONE_URL: JSON.stringify('https://bruga-time-zone.onrender.com/timezone'),
         PUBLIC_PATH: publicPath
       }),
       new MiniCssExtractPlugin({
