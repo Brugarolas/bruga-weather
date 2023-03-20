@@ -122,14 +122,14 @@ module.exports = (env, args) => {
       new HtmlWebPackPlugin({
         template: './src/index.html',
         filename: './index.html',
-        favicon: './src/assets/logo.png', // Delete when Favicon plugin is supported again
+        favicon: './src/assets/logo.png', // TODO Delete when Favicon plugin is supported again
         meta: {
           viewport: 'user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no',
           description: 'Simple weather app made with <3 by Andrés Brugarolas'
         },
         inject: true
       })
-      // new FaviconsWebpackPlugin('./src/assets/logo.png') // Webpack 5 still not supported
+      // TODO new FaviconsWebpackPlugin('./src/assets/logo.png') // Webpack 5 still not supported
     ],
     resolve: {
       alias: {
